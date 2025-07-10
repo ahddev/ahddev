@@ -12,13 +12,13 @@ export default function Home() {
           a passion for building web applications & mobile apps.  
         </h2>
         <div className="animate-fade-up animate-delay-1000 animate-ease-out flex gap-8">
-          <a href="https://www.instagram.com/ahddev/">
+          <a target="_blank" href="https://www.instagram.com/ahddev/">
             <Instagram className="w-10 h-10 hover:text-blue-500" />
           </a>
-          <a href="https://www.linkedin.com/in/ahddev/">
+          <a target="_blank" href="https://www.linkedin.com/in/ahddev/">
             <Linkedin className="w-10 h-10 hover:text-blue-500" />
           </a>
-          <a href="https://www.github.com/ahddev/">
+          <a target="_blank" href="https://www.github.com/ahddev/">
             <Github className="w-10 h-10 hover:text-blue-500" />
           </a>
         </div>
