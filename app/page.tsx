@@ -38,8 +38,9 @@ export default function Home() {
             <Instagram className="w-10 h-10 hover:text-blue-500" />
           </Link>
           <Link target="_blank" href="https://www.linkedin.com/in/ahddev/">
-            <Linkedin className="w-10 h-10 hover:text-blue-500" />
-          </Link>
+            <Linkedin className="w-10 h-10  hover:text-blue-500" />
+          </Link> 
+
           <Link target="_blank" href="https://www.github.com/ahddev/">
             <Github className="w-10 h-10 hover:text-blue-500" />
           </Link>
