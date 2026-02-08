@@ -34,7 +34,10 @@ export default function Home() {
           with a passion for building web applications & mobile apps.
         </h2>
         <div className="animate-fade-up animate-delay-1000 animate-ease-out flex gap-8">
-          <Link target="_blank" href="https://www.instagram.com/ahddev/">
+          {/* <Link target="_blank" href="https://www.instagram.com/ahddev/">
+            <Instagram className="w-10 h-10 hover:text-blue-500" />
+          </Link> */}
+          <Link target="_blank" href="https://www.instagram.com/realahed/">
             <Instagram className="w-10 h-10 hover:text-blue-500" />
           </Link>
           <Link target="_blank" href="https://www.linkedin.com/in/ahddev/">
