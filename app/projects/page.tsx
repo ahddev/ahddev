@@ -39,9 +39,9 @@ function page() {
               <Image
                 src="/nqsh-3d.png"
                 alt="nqsh-3d.com"
-                width={350}
-                height={350}
-                quality={80}
+                width={500}
+                height={500}
+                quality={90}
                 className="w-full h-full object-cover"
               />
               <h2 className="mt-4 text-2xl font-bold flex items-center gap-2">
@@ -55,9 +55,10 @@ function page() {
               <Image
                 src="/labak-sy.png"
                 alt="labak-sy.store"
-                width={350}
-                height={350}
-                quality={80}
+                width={500}
+                height={500}
+                quality={90}
+
                 className="w-full h-full object-cover"
               />
               <h2 className="mt-4 text-2xl font-bold flex items-center gap-2">
@@ -71,9 +72,10 @@ function page() {
               <Image
                 src="/razio.png"
                 alt="Razio.store"
-                width={350}
-                height={350}
-                quality={80}
+                width={500}
+                height={500}
+                quality={90}
+
                 className="w-full h-full object-cover"
               />
               <h2 className="mt-4 text-2xl font-bold flex items-center gap-2">
@@ -87,9 +89,10 @@ function page() {
               <Image
                 src="/iust.png"
                 alt="IUST Lecture Materials"
-                width={350}
-                height={350}
-                quality={80}
+                width={500}
+                height={500}
+                quality={90}
+
                 className="w-full h-full object-cover"
               />
               <h2 className="mt-4 text-2xl font-bold flex items-center gap-2">
