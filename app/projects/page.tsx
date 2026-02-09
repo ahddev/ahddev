@@ -45,7 +45,7 @@ function page() {
                 className="w-full h-full object-cover"
               />
               <h2 className="mt-4 text-2xl font-bold flex items-center gap-2">
-                nqsh-3d.com <ExternalLink className="w-4 h-4" />
+                nqsh-3d.com <ExternalLink className="w-5 h-5" />
               </h2>
             </div>
             <div
@@ -62,7 +62,7 @@ function page() {
                 className="w-full h-full object-cover"
               />
               <h2 className="mt-4 text-2xl font-bold flex items-center gap-2">
-                Labak-sy <ExternalLink className="w-4 h-4" />
+                Labak-sy <ExternalLink className="w-5 h-5" />
               </h2>
             </div>
             <div
@@ -79,26 +79,10 @@ function page() {
                 className="w-full h-full object-cover"
               />
               <h2 className="mt-4 text-2xl font-bold flex items-center gap-2">
-                Razio.store <ExternalLink className="w-4 h-4" />
+                Razio.store <ExternalLink className="w-5 h-5" />
               </h2>
             </div>
-            <div
-              className="w-full h-full md:w-[26rem] hover:underline cursor-pointer border-2 p-4 rounded-2xl shadow-md hover:shadow-lg transition-all  duration-300 hover:bg-foreground/10 hover:scale-105"
-              onClick={() => window.open("https://iust.ir", "_blank")}
-            >
-              <Image
-                src="/iust.png"
-                alt="IUST Lecture Materials"
-                width={500}
-                height={500}
-                quality={90}
-
-                className="w-full h-full object-cover"
-              />
-              <h2 className="mt-4 text-2xl font-bold flex items-center gap-2">
-                IUST Lecture Materials <ExternalLink className="w-4 h-4" />
-              </h2>
-            </div>
+            
           </div>
         </div>
       </main>
