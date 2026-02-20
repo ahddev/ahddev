@@ -37,7 +37,7 @@ export default function Home() {
           {/* <Link target="_blank" href="https://www.instagram.com/ahddev/">
             <Instagram className="w-10 h-10 hover:text-blue-500" />
           </Link> */}
-          <Link target="_blank" href="https://www.instagram.com/realahed/">
+          <Link target="_blank" href="https://www.instagram.com/ahddev/">
             <Instagram className="w-10 h-10 hover:text-blue-500" />
           </Link>
           <Link target="_blank" href="https://www.linkedin.com/in/ahddev/">

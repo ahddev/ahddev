@@ -34,7 +34,7 @@ function page() {
           <div className="mt-6 animate-fade-down animate-ease-out delay-500 flex flex-col  gap-4 md:flex-row">
             <div
               className="w-full md:w-[26rem] h-full hover:underline cursor-pointer border-2 rounded-2xl p-4  shadow-md hover:shadow-lg transition-all  duration-300 hover:bg-foreground/10 hover:scale-105"
-              onClick={() => window.open("https://nqsh.vercel.app", "_blank")}
+              onClick={() => window.open("https://nqsh-3d.com", "_blank")}
             >
               <Image
                 src="/nqsh-3d.png"
