@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Syne } from "next/font/google";
 import "./globals.css";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,9 +14,14 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const syne = Syne({
+  variable: "--font-syne",
+  subsets: ["latin"],
+});
+
 export const metadata: Metadata = {
   title: "Ahed Al-Khalaf",
-  description: "Ahed Al-Khalaf's portfolio",
+  description: "Ahed Al-Khalaf's portfolio - Software Engineer",
 };
 
 export default function RootLayout({
@@ -25,9 +32,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${syne.variable} antialiased`}
       >
-        {children}
+        <Header />
+        <div className="flex min-h-screen flex-col">
+          {children}
+          <Footer />
+        </div>
       </body>
     </html>
   );

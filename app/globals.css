@@ -9,6 +9,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-syne);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -120,4 +121,23 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Subtle gradient mesh background */
+body {
+  background-image: radial-gradient(
+      ellipse 80% 50% at 50% -20%,
+      oklch(0.488 0.243 264.376 / 15%),
+      transparent
+    ),
+    radial-gradient(
+      ellipse 60% 40% at 100% 50%,
+      oklch(0.627 0.265 303.9 / 8%),
+      transparent
+    ),
+    radial-gradient(
+      ellipse 50% 30% at 0% 80%,
+      oklch(0.696 0.17 162.48 / 10%),
+      transparent
+    );
 }
