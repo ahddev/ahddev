@@ -23,6 +23,16 @@ const nextConfig: NextConfig = {
         destination: "https://www.github.com/ahddev/",
         permanent: false,
       },
+      {
+        source: "/whatsapp",
+        destination: "https://wa.me/963954649278",
+        permanent: false,
+      },
+      {
+        source: "/chat",
+        destination: "https://wa.me/963954649278",
+        permanent: false,
+      },
     ];
   },
 };
