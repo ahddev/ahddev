@@ -49,15 +49,15 @@ sectionTitle("PROJECTS");
 
 const projects = [
   {
-    name: "NQSH (نَقْش)",
+    name: "NQSH",
     desc: "3D printing shop website — live at nqsh-3d.com",
   },
   {
-    name: "Labak (لابَك)",
+    name: "Labak",
     desc: "Free delivery dental tools store for dentists — live at labak-sy.com",
   },
   {
-    name: "Razio Store (رازيو)",
+    name: "Razio Store",
     desc: "Laptop catalog website — archived at razio.store",
   },
 ];
