@@ -141,3 +141,23 @@ body {
       transparent
     );
 }
+
+@media (max-width: 768px) {
+  body {
+    background-image: radial-gradient(
+        ellipse 65% 45% at 50% -20%,
+        oklch(0.488 0.243 264.376 / 15%),
+        transparent
+      ),
+      radial-gradient(
+        ellipse 50% 35% at 85% 50%,
+        oklch(0.627 0.265 303.9 / 8%),
+        transparent
+      ),
+      radial-gradient(
+        ellipse 70% 40% at 15% 85%,
+        oklch(0.696 0.17 162.48 / 10%),
+        transparent
+      );
+  }
+}

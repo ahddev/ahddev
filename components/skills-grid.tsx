@@ -3,9 +3,9 @@ const skills = [
   "Next.js",
   "TypeScript",
   "Tailwind CSS",
-  "Node.js",
   "Supabase",
   "Git",
+  "Node.js",
 ];
 
 export function SkillsGrid() {
