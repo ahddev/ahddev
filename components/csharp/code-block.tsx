@@ -26,13 +26,13 @@ export async function CodeBlock({
 
       <div className="overflow-x-auto">
         <div
-          className="[&_.shiki]:m-0 [&_.shiki]:!bg-transparent [&_.shiki]:p-4 [&_.shiki]:text-sm [&_.shiki]:leading-6"
+          className="[&_.shiki]:m-0 [&_.shiki]:!bg-transparent [&_.shiki]:px-3 [&_.shiki]:py-4 [&_.shiki]:text-sm [&_.shiki]:leading-6 sm:[&_.shiki]:px-4"
           dangerouslySetInnerHTML={{ __html: html }}
         />
       </div>
 
       {output ? (
-        <div className="border-t border-border/60 bg-background/40 px-4 py-3">
+        <div className="border-t border-border/60 bg-background/40 px-3 py-3 sm:px-4">
           <p className="mb-2 text-xs uppercase tracking-wide text-muted-foreground">Output</p>
           <pre className="overflow-x-auto text-sm text-foreground">{output}</pre>
         </div>

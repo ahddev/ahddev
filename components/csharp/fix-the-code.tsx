@@ -22,7 +22,7 @@ export function FixTheCode({ title, broken, solution, hint }: FixTheCodeProps) {
   );
 
   return (
-    <div className="rounded-xl border border-border/70 bg-card/50 p-4">
+    <div className="min-w-0 rounded-xl border border-border/70 bg-card/50 p-4">
       <h4 className="mb-3 text-sm font-semibold">{title}</h4>
       <textarea
         value={attempt}

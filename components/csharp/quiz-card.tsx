@@ -24,7 +24,7 @@ export function QuizCard({ question, options, answer, explanation }: QuizCardPro
           return (
             <label
               key={option}
-              className={`flex cursor-pointer items-center gap-2 rounded-md border px-3 py-2 text-sm transition-colors ${
+              className={`flex min-w-0 cursor-pointer items-center gap-2 rounded-md border px-3 py-2 text-sm transition-colors ${
                 isRight
                   ? "border-green-500/60 bg-green-500/10"
                   : isWrong
@@ -39,7 +39,7 @@ export function QuizCard({ question, options, answer, explanation }: QuizCardPro
                 onChange={() => setSelected(index)}
                 className="accent-primary"
               />
-              <span>{option}</span>
+              <span className="break-words">{option}</span>
             </label>
           );
         })}
