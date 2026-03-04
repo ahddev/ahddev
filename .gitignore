@@ -20,6 +20,9 @@
 # production
 /build
 
+# local files
+برمجة كائنية المنحى OOP/
+
 # misc
 .DS_Store
 *.pem

@@ -7,7 +7,7 @@ export default function CsharpPage() {
       <section className="rounded-2xl border border-border/70 bg-card/40 p-6">
         <h1 className="font-[family-name:var(--font-syne)] text-3xl font-bold sm:text-4xl">C# Learning Hub</h1>
         <p className="mt-3 max-w-3xl text-muted-foreground">
-          Study your university OOP slides in a docs-style format inspired by react.dev. Each chapter includes
+          Study your IUST university OOP slides in a docs-style format inspired by react.dev. Each chapter includes
           concise explanations, copyable code examples, and small fix-the-code exercises.
         </p>
       </section>
