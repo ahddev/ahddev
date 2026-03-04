@@ -3004,37 +3004,6 @@ class Program
       },
     ],
   },
-
-  // ─────────────────────────────────────────────────────────────────────────
-  // PLACEHOLDER CHAPTERS
-  // ─────────────────────────────────────────────────────────────────────────
-  {
-    slug: "chapter-7",
-    title: "Chapter 7 (Awaiting Text Extraction)",
-    subtitle:
-      "Ch7_OOP.pdf is image-only. No machine-readable text was found in this environment.",
-    source: "Ch7_OOP.pdf",
-    available: false,
-    sections: [
-      {
-        heading: "How to activate this chapter",
-        text: "Send Chapter 7 text or screenshots per slide. I will convert it into detailed lessons, exercises, and quizzes.",
-      },
-    ],
-  },
-  {
-    slug: "chapter-8",
-    title: "Chapter 8 (Coming Soon)",
-    subtitle: "Source PDF is image-only and needs manual extraction.",
-    source: "Ch8_OOP.pdf",
-    available: false,
-    sections: [
-      {
-        heading: "Pending content extraction",
-        text: "Please provide text for Chapter 8 slides, and this topic will be activated.",
-      },
-    ],
-  },
 ];
 
 export const csharpTopicMap = new Map(
