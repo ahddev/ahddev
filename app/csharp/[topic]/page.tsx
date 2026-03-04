@@ -61,6 +61,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
               broken={section.fixExercise.broken}
               solution={section.fixExercise.solution}
               hint={section.fixExercise.hint}
+              validate={section.fixExercise.validate}
             />
           ) : null}
 

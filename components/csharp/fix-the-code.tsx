@@ -7,6 +7,8 @@ type FixTheCodeProps = {
   broken: string;
   solution: string;
   hint: string;
+  /** When provided, used instead of exact string match. */
+  validate?: (normalizedAttempt: string) => boolean;
 };
 
 function normalize(value: string) {
@@ -19,12 +21,14 @@ function normalize(value: string) {
     .join("\n");
 }
 
-export function FixTheCode({ title, broken, solution, hint }: FixTheCodeProps) {
+export function FixTheCode({ title, broken, solution, hint, validate }: FixTheCodeProps) {
   const [attempt, setAttempt] = useState(broken);
   const [checked, setChecked] = useState(false);
   const isCorrect = useMemo(
-    () => checked && normalize(attempt) === normalize(solution),
-    [attempt, checked, solution],
+    () =>
+      checked &&
+      (validate ? validate(normalize(attempt)) : normalize(attempt) === normalize(solution)),
+    [attempt, checked, solution, validate],
   );
 
   return (
