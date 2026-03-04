@@ -35,7 +35,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
   const nextTopic = csharpTopics.slice(currentIndex + 1).find((t) => t.available) ?? null;
 
   return (
-    <div className="space-y-6">
+    <div className="min-w-0 space-y-6">
       <header className="rounded-2xl border border-border/70 bg-card/40 p-4 sm:p-6">
         <p className="text-xs uppercase tracking-wide text-muted-foreground">Source: {topic.source}</p>
         <h1 className="mt-2 font-[family-name:var(--font-syne)] text-3xl font-bold sm:text-4xl">{topic.title}</h1>
@@ -43,7 +43,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
       </header>
 
       {topic.sections.map((section) => (
-        <section key={section.heading} className="space-y-4 rounded-xl border border-border/70 bg-card/35 p-4 sm:p-5">
+        <section key={section.heading} className="min-w-0 space-y-4 rounded-xl border border-border/70 bg-card/35 p-4 sm:p-5">
           <h2 className="text-xl font-semibold">{section.heading}</h2>
           <p className="leading-relaxed text-muted-foreground">{section.text}</p>
 

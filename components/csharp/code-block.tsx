@@ -24,7 +24,7 @@ export async function CodeBlock({
         <CopySnippetButton value={snippet} />
       </div>
 
-      <div className="overflow-x-auto">
+      <div className="min-w-0 overflow-x-auto">
         <div
           className="[&_.shiki]:m-0 [&_.shiki]:!bg-transparent [&_.shiki]:px-3 [&_.shiki]:py-4 [&_.shiki]:text-sm [&_.shiki]:leading-6 sm:[&_.shiki]:px-4"
           dangerouslySetInnerHTML={{ __html: html }}
