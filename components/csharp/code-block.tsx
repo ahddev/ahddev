@@ -24,10 +24,12 @@ export async function CodeBlock({
         <CopySnippetButton value={snippet} />
       </div>
 
-      <div
-        className="[&_.shiki]:m-0 [&_.shiki]:!bg-transparent [&_.shiki]:p-4 [&_.shiki]:text-sm [&_.shiki]:leading-6"
-        dangerouslySetInnerHTML={{ __html: html }}
-      />
+      <div className="overflow-x-auto">
+        <div
+          className="[&_.shiki]:m-0 [&_.shiki]:!bg-transparent [&_.shiki]:p-4 [&_.shiki]:text-sm [&_.shiki]:leading-6"
+          dangerouslySetInnerHTML={{ __html: html }}
+        />
+      </div>
 
       {output ? (
         <div className="border-t border-border/60 bg-background/40 px-4 py-3">

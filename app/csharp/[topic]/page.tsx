@@ -75,7 +75,7 @@ export default async function TopicPage({ params }: TopicPageProps) {
         </section>
       ))}
 
-      <div className="flex items-center justify-between pb-8">
+      <div className="flex flex-col gap-3 pb-8 sm:flex-row sm:items-center sm:justify-between">
         <Link href="/csharp" className="text-sm text-primary hover:underline">
           Back to C# overview
         </Link>
@@ -83,11 +83,13 @@ export default async function TopicPage({ params }: TopicPageProps) {
         {nextTopic ? (
           <Link
             href={`/csharp/${nextTopic.slug}`}
-            className="flex items-center gap-1 rounded-lg border border-border/70 bg-card/40 px-4 py-2 text-sm transition-colors hover:bg-card/70"
+            className="flex min-w-0 items-center gap-1 rounded-lg border border-border/70 bg-card/40 px-4 py-2 text-sm transition-colors hover:bg-card/70"
           >
-            <span className="text-muted-foreground">Next:</span>
-            <span className="font-medium">{nextTopic.title}</span>
-            <span className="ml-1 text-primary">→</span>
+            <span className="shrink-0 text-muted-foreground">Next:</span>
+            <span className="min-w-0 truncate font-medium" title={nextTopic.title}>
+              {nextTopic.title}
+            </span>
+            <span className="ml-1 shrink-0 text-primary">→</span>
           </Link>
         ) : null}
       </div>
