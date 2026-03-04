@@ -31,6 +31,9 @@ export default async function TopicPage({ params }: TopicPageProps) {
     notFound();
   }
 
+  const currentIndex = csharpTopics.findIndex((t) => t.slug === topicSlug);
+  const nextTopic = csharpTopics.slice(currentIndex + 1).find((t) => t.available) ?? null;
+
   return (
     <div className="space-y-6">
       <header className="rounded-2xl border border-border/70 bg-card/40 p-6">
@@ -72,10 +75,21 @@ export default async function TopicPage({ params }: TopicPageProps) {
         </section>
       ))}
 
-      <div className="pb-8">
+      <div className="flex items-center justify-between pb-8">
         <Link href="/csharp" className="text-sm text-primary hover:underline">
           Back to C# overview
         </Link>
+
+        {nextTopic ? (
+          <Link
+            href={`/csharp/${nextTopic.slug}`}
+            className="flex items-center gap-1 rounded-lg border border-border/70 bg-card/40 px-4 py-2 text-sm transition-colors hover:bg-card/70"
+          >
+            <span className="text-muted-foreground">Next:</span>
+            <span className="font-medium">{nextTopic.title}</span>
+            <span className="ml-1 text-primary">→</span>
+          </Link>
+        ) : null}
       </div>
     </div>
   );
