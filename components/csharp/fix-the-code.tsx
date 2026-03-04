@@ -10,7 +10,13 @@ type FixTheCodeProps = {
 };
 
 function normalize(value: string) {
-  return value.trim().replace(/\r\n/g, "\n");
+  return value
+    .replace(/\r\n/g, "\n")
+    .replace(/\r/g, "\n")
+    .split("\n")
+    .map((line) => line.trim())
+    .filter((line) => line.length > 0)
+    .join("\n");
 }
 
 export function FixTheCode({ title, broken, solution, hint }: FixTheCodeProps) {
