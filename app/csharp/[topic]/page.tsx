@@ -11,10 +11,14 @@ type TopicPageProps = {
 };
 
 export async function generateStaticParams() {
-  return csharpTopics.filter((topic) => topic.available).map((topic) => ({ topic: topic.slug }));
+  return csharpTopics
+    .filter((topic) => topic.available)
+    .map((topic) => ({ topic: topic.slug }));
 }
 
-export async function generateMetadata({ params }: TopicPageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: TopicPageProps): Promise<Metadata> {
   const { topic: topicSlug } = await params;
   const topic = getCsharpTopic(topicSlug);
   return {
@@ -32,20 +36,30 @@ export default async function TopicPage({ params }: TopicPageProps) {
   }
 
   const currentIndex = csharpTopics.findIndex((t) => t.slug === topicSlug);
-  const nextTopic = csharpTopics.slice(currentIndex + 1).find((t) => t.available) ?? null;
+  const nextTopic =
+    csharpTopics.slice(currentIndex + 1).find((t) => t.available) ?? null;
 
   return (
     <div className="min-w-0 space-y-6">
       <header className="rounded-2xl border border-border/70 bg-card/40 p-4 sm:p-6">
-        <p className="text-xs uppercase tracking-wide text-muted-foreground">Source: {topic.source}</p>
-        <h1 className="mt-2 font-[family-name:var(--font-syne)] text-3xl font-bold sm:text-4xl">{topic.title}</h1>
+        <p className="text-xs uppercase tracking-wide text-muted-foreground">
+          Source: {topic.source}
+        </p>
+        <h1 className="mt-2 font-[family-name:var(--font-syne)] text-3xl font-bold sm:text-4xl">
+          {topic.title}
+        </h1>
         <p className="mt-3 text-muted-foreground">{topic.subtitle}</p>
       </header>
 
       {topic.sections.map((section) => (
-        <section key={section.heading} className="min-w-0 space-y-4 rounded-xl border border-border/70 bg-card/35 p-4 sm:p-5">
+        <section
+          key={section.heading}
+          className="min-w-0 space-y-4 rounded-xl border border-border/70 bg-card/35 p-4 sm:p-5"
+        >
           <h2 className="text-xl font-semibold">{section.heading}</h2>
-          <p className="leading-relaxed text-muted-foreground">{section.text}</p>
+          <p className="leading-relaxed text-muted-foreground">
+            {section.text}
+          </p>
 
           {section.code ? (
             <CodeBlock
@@ -87,7 +101,10 @@ export default async function TopicPage({ params }: TopicPageProps) {
             className="flex min-w-0 items-center gap-1 rounded-lg border border-border/70 bg-card/40 px-4 py-2 text-sm transition-colors hover:bg-card/70"
           >
             <span className="shrink-0 text-muted-foreground">Next:</span>
-            <span className="min-w-0 truncate font-medium" title={nextTopic.title}>
+            <span
+              className="min-w-0 truncate font-medium"
+              title={nextTopic.title}
+            >
               {nextTopic.title}
             </span>
             <span className="ml-1 shrink-0 text-primary">→</span>

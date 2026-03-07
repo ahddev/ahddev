@@ -99,9 +99,15 @@ class Program
         },
         quiz: {
           question: "What character ends every statement in C#?",
-          options: ["A period (.)", "A colon (:)", "A semicolon (;)", "A newline"],
+          options: [
+            "A period (.)",
+            "A colon (:)",
+            "A semicolon (;)",
+            "A newline",
+          ],
           answer: 2,
-          explanation: "Every statement in C# must be terminated with a semicolon (;).",
+          explanation:
+            "Every statement in C# must be terminated with a semicolon (;).",
         },
       },
       {
@@ -182,10 +188,12 @@ class Program
           hint: "Remove const to make max a regular variable that can be reassigned.",
         },
         quiz: {
-          question: "Which keyword creates a value that cannot be changed after declaration?",
+          question:
+            "Which keyword creates a value that cannot be changed after declaration?",
           options: ["static", "readonly", "const", "fixed"],
           answer: 2,
-          explanation: "const creates a compile-time constant. readonly is set once at construction time.",
+          explanation:
+            "const creates a compile-time constant. readonly is set once at construction time.",
         },
       },
       {
@@ -273,10 +281,12 @@ class Program
           hint: "char uses single quotes ('A'). string uses double quotes (\"Hi\").",
         },
         quiz: {
-          question: "What is the default value of an uninitialized int field in C#?",
+          question:
+            "What is the default value of an uninitialized int field in C#?",
           options: ["null", "1", "0", "-1"],
           answer: 2,
-          explanation: "Numeric value types default to 0. bool defaults to false. Reference types default to null.",
+          explanation:
+            "Numeric value types default to 0. bool defaults to false. Reference types default to null.",
         },
       },
 
@@ -328,10 +338,17 @@ class Program
           hint: "Use int.Parse() or Convert.ToInt32() to convert a string to an integer.",
         },
         quiz: {
-          question: "Which conversion requires an explicit cast operator in C#?",
-          options: ["int to double", "double to int", "int to long", "int to float"],
+          question:
+            "Which conversion requires an explicit cast operator in C#?",
+          options: [
+            "int to double",
+            "double to int",
+            "int to long",
+            "int to float",
+          ],
           answer: 1,
-          explanation: "Converting double to int loses the fractional part and requires an explicit (int) cast.",
+          explanation:
+            "Converting double to int loses the fractional part and requires an explicit (int) cast.",
         },
       },
 
@@ -386,7 +403,8 @@ class Program
           question: "What type does Console.ReadLine() return?",
           options: ["int", "char", "string", "double"],
           answer: 2,
-          explanation: "Console.ReadLine() always returns string, regardless of what the user types.",
+          explanation:
+            "Console.ReadLine() always returns string, regardless of what the user types.",
         },
       },
 
@@ -450,14 +468,15 @@ class Program
             "The absolute value",
           ],
           answer: 1,
-          explanation: "% is the modulo operator. 10 % 3 returns 1 because 10 = 3 × 3 + 1.",
+          explanation:
+            "% is the modulo operator. 10 % 3 returns 1 because 10 = 3 × 3 + 1.",
         },
       },
 
       // ── STRINGS ──────────────────────────────────────────────────────────
       {
         heading: "Strings",
-        text: "Strings are immutable sequences of characters. Use string interpolation ($\"\") or concatenation (+) to combine them. Common members: Length, ToUpper(), ToLower(), Substring(), Contains(), Replace().",
+        text: 'Strings are immutable sequences of characters. Use string interpolation ($"") or concatenation (+) to combine them. Common members: Length, ToUpper(), ToLower(), Substring(), Contains(), Replace().',
         code: {
           language: "csharp",
           snippet: `string name = "Alice";
@@ -505,10 +524,12 @@ class Program
           hint: "Add $ before the opening quote to enable interpolation.",
         },
         quiz: {
-          question: "Which member returns the number of characters in a string?",
+          question:
+            "Which member returns the number of characters in a string?",
           options: ["Count()", "Size()", "Length", "Len()"],
           answer: 2,
-          explanation: "Length is a property (not a method) that returns the character count of a string.",
+          explanation:
+            "Length is a property (not a method) that returns the character count of a string.",
         },
       },
 
@@ -579,7 +600,8 @@ class Program
           question: "Which keyword exits a switch case in C#?",
           options: ["exit", "stop", "break", "end"],
           answer: 2,
-          explanation: "break exits the current switch case. C# does not allow implicit fall-through.",
+          explanation:
+            "break exits the current switch case. C# does not allow implicit fall-through.",
         },
       },
       {
@@ -681,7 +703,8 @@ class Program
             "Pauses execution for one second",
           ],
           answer: 2,
-          explanation: "break exits the nearest enclosing loop immediately. Use continue to skip one iteration.",
+          explanation:
+            "break exits the nearest enclosing loop immediately. Use continue to skip one iteration.",
         },
       },
       {
@@ -774,7 +797,8 @@ class Program
           question: "What property gives the number of elements in a C# array?",
           options: ["Count", "Size", "Length", "Capacity"],
           answer: 2,
-          explanation: "Arrays expose a Length property. List<T> uses Count. Both give the element count.",
+          explanation:
+            "Arrays expose a Length property. List<T> uses Count. Both give the element count.",
         },
       },
 
@@ -837,10 +861,12 @@ class Program
           hint: "A method declared as int must end with return <int value>;",
         },
         quiz: {
-          question: "What return type should a method use if it returns nothing?",
+          question:
+            "What return type should a method use if it returns nothing?",
           options: ["null", "empty", "nothing", "void"],
           answer: 3,
-          explanation: "void means the method performs an action but returns no value.",
+          explanation:
+            "void means the method performs an action but returns no value.",
         },
       },
     ],
@@ -926,7 +952,8 @@ class Program
           question: "What keyword creates a new instance of a class?",
           options: ["create", "instance", "new", "make"],
           answer: 2,
-          explanation: "new allocates memory and calls the constructor to create an instance of the class.",
+          explanation:
+            "new allocates memory and calls the constructor to create an instance of the class.",
         },
       },
 
@@ -1000,10 +1027,12 @@ class Program
           hint: "balance is private and cannot be accessed directly from outside the class. Remove the direct assignment.",
         },
         quiz: {
-          question: "What access modifier makes a field visible only within its own class?",
+          question:
+            "What access modifier makes a field visible only within its own class?",
           options: ["public", "internal", "protected", "private"],
           answer: 3,
-          explanation: "private restricts access to within the declaring class only.",
+          explanation:
+            "private restricts access to within the declaring class only.",
         },
       },
 
@@ -1061,10 +1090,12 @@ Console.WriteLine($"{p.Name} is {p.Age}");`,
           hint: "The property currently has only a get accessor. Add set { name = value; } to allow writing.",
         },
         quiz: {
-          question: "What keyword inside a set accessor refers to the incoming value?",
+          question:
+            "What keyword inside a set accessor refers to the incoming value?",
           options: ["input", "param", "value", "data"],
           answer: 2,
-          explanation: "value is the implicit parameter in a set accessor that holds the assigned value.",
+          explanation:
+            "value is the implicit parameter in a set accessor that holds the assigned value.",
         },
       },
 
@@ -1155,7 +1186,8 @@ class Program
             "When a method is called on an object",
           ],
           answer: 1,
-          explanation: "Constructors run automatically each time new creates a new instance.",
+          explanation:
+            "Constructors run automatically each time new creates a new instance.",
         },
       },
 
@@ -1178,10 +1210,17 @@ Object in use
 Destructed`,
         },
         quiz: {
-          question: "What is the correct syntax for a destructor named MyClass?",
-          options: ["void ~MyClass()", "~MyClass()", "delete MyClass()", "MyClass~()"],
+          question:
+            "What is the correct syntax for a destructor named MyClass?",
+          options: [
+            "void ~MyClass()",
+            "~MyClass()",
+            "delete MyClass()",
+            "MyClass~()",
+          ],
           answer: 1,
-          explanation: "A destructor is declared with a tilde (~) before the class name and has no return type or parameters.",
+          explanation:
+            "A destructor is declared with a tilde (~) before the class name and has no return type or parameters.",
         },
       },
 
@@ -1236,7 +1275,8 @@ class Program
           hint: "Use Clone() or Array.Copy() to create an independent copy of an array.",
         },
         quiz: {
-          question: "What happens when you assign one class instance to another variable?",
+          question:
+            "What happens when you assign one class instance to another variable?",
           options: [
             "A deep copy of the object is made",
             "Both variables point to the same object in memory",
@@ -1244,7 +1284,8 @@ class Program
             "A compile error occurs",
           ],
           answer: 1,
-          explanation: "Class instances are reference types. Assignment copies the reference, so both variables share the same object.",
+          explanation:
+            "Class instances are reference types. Assignment copies the reference, so both variables share the same object.",
         },
       },
     ],
@@ -1324,7 +1365,8 @@ class Program
           hint: "Static members are accessed with ClassName.MemberName, not through an instance.",
         },
         quiz: {
-          question: "How many copies of a static field exist across all instances?",
+          question:
+            "How many copies of a static field exist across all instances?",
           options: [
             "One per instance",
             "Zero — static fields are destroyed after creation",
@@ -1332,7 +1374,8 @@ class Program
             "Two — one for each thread",
           ],
           answer: 2,
-          explanation: "Static fields have exactly one copy shared by all instances of the class.",
+          explanation:
+            "Static fields have exactly one copy shared by all instances of the class.",
         },
       },
 
@@ -1408,7 +1451,8 @@ class Program
             "They are always private",
           ],
           answer: 2,
-          explanation: "Static methods are called via ClassName.Method() without creating an instance.",
+          explanation:
+            "Static methods are called via ClassName.Method() without creating an instance.",
         },
       },
 
@@ -1444,7 +1488,8 @@ MyApp v1.0`,
             "Never automatically",
           ],
           answer: 1,
-          explanation: "A static constructor runs exactly once, triggered by the first access to the class.",
+          explanation:
+            "A static constructor runs exactly once, triggered by the first access to the class.",
         },
       },
 
@@ -1530,7 +1575,8 @@ class Program
             "The static version of the class",
           ],
           answer: 1,
-          explanation: "this is a reference to the current object — the instance the method was called on.",
+          explanation:
+            "this is a reference to the current object — the instance the method was called on.",
         },
       },
 
@@ -1591,7 +1637,8 @@ class Program
             "To define access modifiers",
           ],
           answer: 1,
-          explanation: "Namespaces group related types and prevent naming conflicts between libraries.",
+          explanation:
+            "Namespaces group related types and prevent naming conflicts between libraries.",
         },
       },
     ],
@@ -1685,10 +1732,12 @@ class Program
           hint: "celsius is private. Use SetCelsius() so the validation runs.",
         },
         quiz: {
-          question: "Which specifier allows access within the class and in derived classes?",
+          question:
+            "Which specifier allows access within the class and in derived classes?",
           options: ["private", "public", "protected", "internal"],
           answer: 2,
-          explanation: "protected is visible in the declaring class and all classes that inherit from it.",
+          explanation:
+            "protected is visible in the declaring class and all classes that inherit from it.",
         },
       },
 
@@ -1768,7 +1817,8 @@ class Program
           hint: "Two methods with the same name must differ in parameter types or count, not just return type.",
         },
         quiz: {
-          question: "What distinguishes two overloaded methods with the same name?",
+          question:
+            "What distinguishes two overloaded methods with the same name?",
           options: [
             "Different return types only",
             "Different access modifiers",
@@ -1776,7 +1826,8 @@ class Program
             "Different method bodies",
           ],
           answer: 2,
-          explanation: "Overloaded methods must differ in their parameter list (type, count, or order).",
+          explanation:
+            "Overloaded methods must differ in their parameter list (type, count, or order).",
         },
       },
 
@@ -1853,10 +1904,12 @@ class Box
           hint: "Use : this(1, 1, 1) on the parameterless constructor to call the three-parameter one.",
         },
         quiz: {
-          question: "What syntax calls another constructor from within a constructor?",
+          question:
+            "What syntax calls another constructor from within a constructor?",
           options: [": base(...)", ": this(...)", "call(...)", "super(...)"],
           answer: 1,
-          explanation: ": this(...) chains to another constructor in the same class.",
+          explanation:
+            ": this(...) chains to another constructor in the same class.",
         },
       },
 
@@ -1884,7 +1937,8 @@ Console.WriteLine(v1 + v2);`,
           output: "(4, 6)",
         },
         quiz: {
-          question: "What modifiers are required on an overloaded operator method?",
+          question:
+            "What modifiers are required on an overloaded operator method?",
           options: [
             "private and static",
             "public and static",
@@ -1989,7 +2043,8 @@ class Program
             "Objects are created from an interface",
           ],
           answer: 1,
-          explanation: "In composition the part cannot exist without the whole — their lifetimes are coupled.",
+          explanation:
+            "In composition the part cannot exist without the whole — their lifetimes are coupled.",
         },
       },
 
@@ -2071,7 +2126,8 @@ class Program
           hint: "Accept the Pilot as a constructor parameter instead of creating it inside Plane.",
         },
         quiz: {
-          question: "What is the key difference between composition and aggregation?",
+          question:
+            "What is the key difference between composition and aggregation?",
           options: [
             "Composition uses interfaces; aggregation does not",
             "In aggregation the contained object can outlive the container",
@@ -2079,7 +2135,8 @@ class Program
             "There is no practical difference",
           ],
           answer: 1,
-          explanation: "In aggregation the contained object exists independently and can outlive the container.",
+          explanation:
+            "In aggregation the contained object exists independently and can outlive the container.",
         },
       },
 
@@ -2163,7 +2220,8 @@ class Program
             "In the outer class and all derived classes",
           ],
           answer: 1,
-          explanation: "A private nested class is accessible only inside the outer class that contains it.",
+          explanation:
+            "A private nested class is accessible only inside the outer class that contains it.",
         },
       },
 
@@ -2221,7 +2279,8 @@ public partial class Employee
           question: "What keyword splits a class across multiple files?",
           options: ["split", "shared", "partial", "multi"],
           answer: 2,
-          explanation: "The partial keyword allows a class definition to span multiple files.",
+          explanation:
+            "The partial keyword allows a class definition to span multiple files.",
         },
       },
     ],
@@ -2314,7 +2373,8 @@ class Program
           question: "How many direct base classes can a C# class inherit from?",
           options: ["Unlimited", "Two", "One", "Zero"],
           answer: 2,
-          explanation: "C# classes support single direct inheritance. A class can implement multiple interfaces.",
+          explanation:
+            "C# classes support single direct inheritance. A class can implement multiple interfaces.",
         },
       },
 
@@ -2389,7 +2449,8 @@ class Program
             "Only in the same file",
           ],
           answer: 2,
-          explanation: "protected allows access within the declaring class and any class that inherits from it.",
+          explanation:
+            "protected allows access within the declaring class and any class that inherits from it.",
         },
       },
 
@@ -2470,10 +2531,12 @@ class Program
           hint: "Add virtual to Animal.Speak() so that Cat can use override.",
         },
         quiz: {
-          question: "What keyword allows a derived class to replace a base class method at runtime?",
+          question:
+            "What keyword allows a derived class to replace a base class method at runtime?",
           options: ["new", "hide", "override", "replace"],
           answer: 2,
-          explanation: "override replaces the base method in runtime dispatch. new hides it without polymorphism.",
+          explanation:
+            "override replaces the base method in runtime dispatch. new hides it without polymorphism.",
         },
       },
 
@@ -2564,7 +2627,8 @@ class Program
           hint: "Add : base(name) after the constructor parameters to pass name to Animal's constructor.",
         },
         quiz: {
-          question: "When does the base constructor body run relative to the derived constructor?",
+          question:
+            "When does the base constructor body run relative to the derived constructor?",
           options: [
             "After the derived constructor body",
             "At the same time",
@@ -2572,7 +2636,8 @@ class Program
             "Only when explicitly called in the body",
           ],
           answer: 2,
-          explanation: "The base constructor always runs first, before the derived class constructor body executes.",
+          explanation:
+            "The base constructor always runs first, before the derived class constructor body executes.",
         },
       },
 
@@ -2649,7 +2714,8 @@ class Program
           question: "Which class does ToString() originally come from?",
           options: ["String", "Console", "object", "System"],
           answer: 2,
-          explanation: "Every C# class implicitly inherits from object, which defines ToString().",
+          explanation:
+            "Every C# class implicitly inherits from object, which defines ToString().",
         },
       },
 
@@ -2680,7 +2746,8 @@ f.Hello();`,
             "Marks the class as abstract",
           ],
           answer: 2,
-          explanation: "sealed stops a class from being used as a base class for inheritance.",
+          explanation:
+            "sealed stops a class from being used as a base class for inheritance.",
         },
       },
     ],
@@ -2761,9 +2828,15 @@ class Program
         },
         quiz: {
           question: "At what stage is an overloaded method call resolved?",
-          options: ["At startup", "At runtime", "At compile time", "On first call only"],
+          options: [
+            "At startup",
+            "At runtime",
+            "At compile time",
+            "On first call only",
+          ],
           answer: 2,
-          explanation: "Overloading is compile-time (static) polymorphism — the compiler selects the version.",
+          explanation:
+            "Overloading is compile-time (static) polymorphism — the compiler selects the version.",
         },
       },
 
@@ -2852,7 +2925,8 @@ class Program
             "Interface polymorphism",
           ],
           answer: 2,
-          explanation: "virtual/override enables runtime (dynamic) polymorphism — the correct version is chosen at runtime.",
+          explanation:
+            "virtual/override enables runtime (dynamic) polymorphism — the correct version is chosen at runtime.",
         },
       },
 
@@ -2937,7 +3011,8 @@ class Program
             "It works only for fields",
           ],
           answer: 1,
-          explanation: "new creates a separate member that hides the base; it does not change runtime dispatch.",
+          explanation:
+            "new creates a separate member that hides the base; it does not change runtime dispatch.",
         },
       },
 
@@ -3007,7 +3082,8 @@ class Program
           question: "What does the as operator return when the cast fails?",
           options: ["0", "false", "null", "It throws an exception"],
           answer: 2,
-          explanation: "as returns null if the object cannot be cast to the target type instead of throwing.",
+          explanation:
+            "as returns null if the object cannot be cast to the target type instead of throwing.",
         },
       },
     ],

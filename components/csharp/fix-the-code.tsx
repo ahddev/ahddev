@@ -21,13 +21,21 @@ function normalize(value: string) {
     .join("\n");
 }
 
-export function FixTheCode({ title, broken, solution, hint, validate }: FixTheCodeProps) {
+export function FixTheCode({
+  title,
+  broken,
+  solution,
+  hint,
+  validate,
+}: FixTheCodeProps) {
   const [attempt, setAttempt] = useState(broken);
   const [checked, setChecked] = useState(false);
   const isCorrect = useMemo(
     () =>
       checked &&
-      (validate ? validate(normalize(attempt)) : normalize(attempt) === normalize(solution)),
+      (validate
+        ? validate(normalize(attempt))
+        : normalize(attempt) === normalize(solution)),
     [attempt, checked, solution, validate],
   );
 
@@ -58,8 +66,12 @@ export function FixTheCode({ title, broken, solution, hint, validate }: FixTheCo
       </div>
 
       {checked ? (
-        <p className={`mt-3 text-sm ${isCorrect ? "text-green-400" : "text-red-400"}`}>
-          {isCorrect ? "Correct solution. Great work." : "Not yet. Compare your code with the hint."}
+        <p
+          className={`mt-3 text-sm ${isCorrect ? "text-green-400" : "text-red-400"}`}
+        >
+          {isCorrect
+            ? "Correct solution. Great work."
+            : "Not yet. Compare your code with the hint."}
         </p>
       ) : null}
     </div>
