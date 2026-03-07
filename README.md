@@ -20,7 +20,7 @@ I enjoy working with modern technologies, clean UI/UX, and writing code that mak
 
 ### 📫 Let's Connect
 
-* 🌍 [Portfolio](https://ahddev.vercel.app/)
+* 🌍 [Portfolio](https://ahed.dev/)
 * 💼 [LinkedIn](https://www.linkedin.com/in/ahddev/)
-* 📸 [Instagram](https://www.instagram.com/ahddev/)
-* ✉️ [Email](mailto:ahed.wka@gmail.com)
+* 📸 [Instagram](https://www.instagram.com/realahd/)
+* ✉️ [Email](mailto:reach.ahed@gmail.com)
