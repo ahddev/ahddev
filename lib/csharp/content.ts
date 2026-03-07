@@ -9,8 +9,8 @@ export type CsharpFixExercise = {
   broken: string;
   solution: string;
   hint: string;
-  /** When provided, used instead of exact string match. Accepts any solution that passes. */
-  validate?: (normalizedAttempt: string) => boolean;
+  /** When provided, uses custom validation instead of exact match. E.g. "var-int-assignment" accepts any int. */
+  validationMode?: string;
 };
 
 export type CsharpQuiz = {
@@ -224,16 +224,10 @@ class Program
     }
 }`,
           hint: "var infers int from the literal 10. You cannot later assign a string to it.",
-          validate: (n) =>
-            n.includes("using System") &&
-            n.includes("var number = 10") &&
-            n.includes("Console.WriteLine(number)") &&
-            /number\s*=\s*\d+\s*;?/.test(n) &&
-            !/number\s*=\s*"[^"]*"/.test(n),
+          validationMode: "var-int-assignment",
         },
       },
 
-      
       // ── DATA TYPES ───────────────────────────────────────────────────────
       {
         heading: "Data Types",

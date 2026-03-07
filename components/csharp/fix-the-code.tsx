@@ -7,8 +7,17 @@ type FixTheCodeProps = {
   broken: string;
   solution: string;
   hint: string;
-  /** When provided, used instead of exact string match. */
-  validate?: (normalizedAttempt: string) => boolean;
+  /** When provided, uses custom validation. E.g. "var-int-assignment" accepts any int. */
+  validationMode?: string;
+};
+
+const VALIDATORS: Record<string, (n: string) => boolean> = {
+  "var-int-assignment": (n) =>
+    n.includes("using System") &&
+    n.includes("var number = 10") &&
+    n.includes("Console.WriteLine(number)") &&
+    /number\s*=\s*\d+\s*;?/.test(n) &&
+    !/number\s*=\s*"[^"]*"/.test(n),
 };
 
 function normalize(value: string) {
@@ -26,10 +35,11 @@ export function FixTheCode({
   broken,
   solution,
   hint,
-  validate,
+  validationMode,
 }: FixTheCodeProps) {
   const [attempt, setAttempt] = useState(broken);
   const [checked, setChecked] = useState(false);
+  const validate = validationMode ? VALIDATORS[validationMode] : undefined;
   const isCorrect = useMemo(
     () =>
       checked &&
