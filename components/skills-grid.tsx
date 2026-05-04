@@ -5,6 +5,7 @@ import { motion, useInView } from "framer-motion";
 import type { IconType } from "react-icons";
 import {
   SiAxios,
+  SiCloudinary,
   SiCss,
   SiDocker,
   SiExpress,
@@ -86,6 +87,7 @@ const categories: { label: string; skills: SkillItem[] }[] = [
       // { name: "CI/CD", icon: SiGithubactions, color: "#2088FF" },
       { name: "GitHub", icon: SiGithub, color: "#ffffff" },
       { name: "Vercel", icon: SiVercel, color: "#ffffff" },
+      { name: "Cloudinary", icon: SiCloudinary, color: "#3448C5" },
       // { name: "Render", icon: SiRender, color: "#46E3B7" },
       // { name: "Railway", icon: SiRailway, color: "#B9C5FF" },
     ],
