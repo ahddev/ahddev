@@ -4,7 +4,11 @@ import { notFound } from "next/navigation";
 import { CodeBlock } from "@/components/csharp/code-block";
 import { FixTheCode } from "@/components/csharp/fix-the-code";
 import { QuizCard } from "@/components/csharp/quiz-card";
-import { csharpTopics, getCsharpTopic } from "@/lib/csharp/content";
+import {
+  csharpSectionDomId,
+  csharpTopics,
+  getCsharpTopic,
+} from "@/lib/csharp/content";
 
 type TopicPageProps = {
   params: Promise<{ topic: string }>;
@@ -49,12 +53,35 @@ export default async function TopicPage({ params }: TopicPageProps) {
           {topic.title}
         </h1>
         <p className="mt-3 text-muted-foreground">{topic.subtitle}</p>
+
+        <nav
+          aria-label="Sections in this lesson"
+          className="mt-5 rounded-xl border border-border/60 bg-background/35 p-3 sm:p-4"
+        >
+          <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+            On this page
+          </p>
+          <ol className="mt-2 columns-1 gap-x-6 gap-y-1 text-sm sm:columns-2">
+            {topic.sections.map((section, index) => (
+              <li key={`toc-${section.heading}-${index}`} className="mb-1 break-inside-avoid">
+                <a
+                  href={`#${csharpSectionDomId(topicSlug, index)}`}
+                  className="text-primary hover:underline"
+                >
+                  <span className="tabular-nums text-muted-foreground">{index + 1}. </span>
+                  {section.heading}
+                </a>
+              </li>
+            ))}
+          </ol>
+        </nav>
       </header>
 
-      {topic.sections.map((section) => (
+      {topic.sections.map((section, index) => (
         <section
           key={section.heading}
-          className="min-w-0 space-y-4 rounded-xl border border-border/70 bg-card/35 p-4 sm:p-5"
+          id={csharpSectionDomId(topicSlug, index)}
+          className="min-w-0 scroll-mt-28 space-y-4 rounded-xl border border-border/70 bg-card/35 p-4 sm:p-5"
         >
           <h2 className="text-xl font-semibold">{section.heading}</h2>
           <p className="leading-relaxed text-muted-foreground">

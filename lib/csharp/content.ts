@@ -46,7 +46,7 @@ export const csharpTopics: CsharpTopic[] = [
     title: "Introduction to C#",
     subtitle:
       "Syntax, variables, data types, type casting, user input, operators, strings, control flow, loops, arrays, and methods.",
-    source: "1.Intro_To_CSharp.pdf",
+    source: "1.Intro_To_CSharp.pdf · EX11.pdf · Bro Code C# Full Course",
     available: true,
     sections: [
       // ── SYNTAX ──────────────────────────────────────────────────────────
@@ -864,6 +864,67 @@ class Program
             "void means the method performs an action but returns no value.",
         },
       },
+
+      {
+        heading: "Bro Code Review — Output and Escape Sequences",
+        text: "Bro Code starts with output formatting. Use escape sequences like \n and \" to control console text layout.",
+        quiz: {
+          question: "Which sequence prints a new line inside a C# string?",
+          options: ["\t", "\n", "\r", "\\"],
+          answer: 1,
+          explanation: "\n inserts a line break in a string literal.",
+        },
+      },
+      {
+        heading: "Bro Code Review — Math and Random",
+        text: "Math methods like Math.Sqrt and generators like Random are common in beginner exercises and games.",
+        quiz: {
+          question: "Which class is commonly used to generate random integers in C#?",
+          options: ["Math", "Console", "Random", "Convert"],
+          answer: 2,
+          explanation: "Random provides methods such as Next() for pseudo-random values.",
+        },
+      },
+      {
+        heading: "Bro Code Review — String Interpolation",
+        text: "Interpolation improves readability versus long + concatenation chains.",
+        quiz: {
+          question: "Which syntax uses string interpolation in C#?",
+          options: ["\"Name: \" + name", "$\"Name: {name}\"", "\"Name: %s\"", "f\"Name: {name}\""],
+          answer: 1,
+          explanation: "C# interpolation uses a $ prefix and expressions inside {}.",
+        },
+      },
+      {
+        heading: "EX11 Trace — Ternary Result",
+        text: "This comes from EX11 style beginner checks around conditional expressions.",
+        quiz: {
+          question: "Given int score = 85; string y = (score >= 50) ? \"Pass\" : \"Fail\"; what is y?",
+          options: ["Fail", "Pass", "null", "Compile error"],
+          answer: 1,
+          explanation: "Because 85 >= 50, the true branch is selected and y becomes Pass.",
+        },
+      },
+      {
+        heading: "Bro Code Review — Exception Handling",
+        text: "When parsing user input, exception handling prevents program crashes and keeps flow controlled.",
+        quiz: {
+          question: "Which keyword begins a block that can throw runtime exceptions?",
+          options: ["handle", "throw", "try", "guard"],
+          answer: 2,
+          explanation: "Use try { ... } with catch { ... } to handle exceptions safely.",
+        },
+      },
+      {
+        heading: "Bro Code Review — Params Keyword",
+        text: "params lets methods accept a variable number of arguments of the same type.",
+        quiz: {
+          question: "What does params int[] numbers allow?",
+          options: ["Only one integer argument", "Any number of int arguments", "Only array variables", "No arguments allowed"],
+          answer: 1,
+          explanation: "params allows calls with zero or more int arguments packed into an array.",
+        },
+      },
     ],
   },
 
@@ -875,7 +936,7 @@ class Program
     title: "Classes and Objects",
     subtitle:
       "OOP concepts, members, constructors, destructors, and value/reference behavior.",
-    source: "Ch1_OOP.pdf",
+    source: "Ch1_OOP.pdf · EX0.pdf · EX1.pdf · EX11.pdf · EXer.pdf · Bro Code C# Full Course",
     available: true,
     sections: [
       // ── CLASS AND OBJECT ─────────────────────────────────────────────────
@@ -1283,6 +1344,111 @@ class Program
             "Class instances are reference types. Assignment copies the reference, so both variables share the same object.",
         },
       },
+
+      {
+        heading: "EX0 Practice — Employee Bonus",
+        text: "From EX0: create Employee with FullName and BaseSalary, then apply bonus percentage.",
+        fixExercise: {
+          title: "Fix ApplyBonus logic",
+          broken: `using System;
+
+class Employee
+{
+    public string FullName { get; set; }
+    public double BaseSalary { get; set; }
+
+    public Employee(string fullName, double baseSalary)
+    {
+        FullName = fullName;
+        BaseSalary = baseSalary;
+    }
+
+    public void ApplyBonus(double percentage)
+    {
+        BaseSalary += percentage;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Employee emp = new Employee("Sara Ali", 1000);
+        emp.ApplyBonus(10);
+        Console.WriteLine(emp.BaseSalary);
+    }
+}`,
+          solution: `using System;
+
+class Employee
+{
+    public string FullName { get; set; }
+    public double BaseSalary { get; set; }
+
+    public Employee(string fullName, double baseSalary)
+    {
+        FullName = fullName;
+        BaseSalary = baseSalary;
+    }
+
+    public void ApplyBonus(double percentage)
+    {
+        BaseSalary += BaseSalary * (percentage / 100.0);
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Employee emp = new Employee("Sara Ali", 1000);
+        emp.ApplyBonus(10);
+        Console.WriteLine(emp.BaseSalary);
+    }
+}`,
+          hint: "percentage is 10 for 10%, so add salary * (percentage / 100.0).",
+        },
+      },
+      {
+        heading: "EX0 Practice — Car Classic Check",
+        text: "A car is considered classic when age is greater than 25 years.",
+        quiz: {
+          question: "If current year is 2026, is a car from 1998 classic using age > 25?",
+          options: ["No, because age is 25", "Yes, because age is 28", "No, because age must be >= 30", "Compile-time error"],
+          answer: 1,
+          explanation: "2026 - 1998 = 28, which is greater than 25.",
+        },
+      },
+      {
+        heading: "EX1 Trace — Reference Mutation",
+        text: "EX1 includes examples where methods mutate objects passed as references.",
+        quiz: {
+          question: "A method receives Test t and executes t.Value = 20; what happens to caller object value?",
+          options: ["It remains unchanged", "It becomes 20", "It becomes 0", "It causes stack overflow"],
+          answer: 1,
+          explanation: "Class instances are reference types; mutating members affects the same object.",
+        },
+      },
+      {
+        heading: "EX1 Trace — Reassigning Parameter",
+        text: "Distinguish mutating an object from reassigning the local parameter variable.",
+        quiz: {
+          question: "If Resize(Box b) does b = new Box(); b.Size = 10;, what is caller myBox.Size (starting at 5)?",
+          options: ["10", "5", "0", "Compile error"],
+          answer: 1,
+          explanation: "Reassigning b only changes the local parameter reference, not the caller variable.",
+        },
+      },
+      {
+        heading: "Bro Code Review — Constructor Purpose",
+        text: "Constructors initialize new objects and can be overloaded for different initialization paths.",
+        quiz: {
+          question: "When is an instance constructor executed?",
+          options: ["Only once per class", "Whenever new creates an instance", "Only after all methods run", "Manually by calling constructor like a normal method"],
+          answer: 1,
+          explanation: "Each object creation through new triggers the instance constructor.",
+        },
+      },
     ],
   },
 
@@ -1294,7 +1460,7 @@ class Program
     title: "Static Members and Namespaces",
     subtitle:
       "Static fields/methods/constructors, the this keyword, and namespaces.",
-    source: "Ch2_OOP.pdf",
+    source: "Ch2_OOP.pdf · EX7.pdf · EX11.pdf · EXXXX.pdf · Bro Code C# Full Course",
     available: true,
     sections: [
       // ── STATIC FIELDS ────────────────────────────────────────────────────
@@ -1636,6 +1802,57 @@ class Program
             "Namespaces group related types and prevent naming conflicts between libraries.",
         },
       },
+
+      {
+        heading: "EX7 Practice — GalleryVisitor Statistics",
+        text: "From EX7: static constructor message, instance constructor increments total visitors, and static report method.",
+        quiz: {
+          question: "What should a static ShowStatistics method read to print total visitor count?",
+          options: ["An instance field", "A local variable", "A static property like TotalVisitors", "A constructor parameter"],
+          answer: 2,
+          explanation: "A static method should read shared static state, such as TotalVisitors.",
+        },
+      },
+      {
+        heading: "EX7 Practice — Product Counter",
+        text: "Product should track total created objects with a private static counter incremented in constructor.",
+        quiz: {
+          question: "Where should TotalProducts++ be placed to count every created product?",
+          options: ["Inside discount()", "Inside static constructor only", "Inside instance constructor", "Inside Main after each new"],
+          answer: 2,
+          explanation: "Increment in the instance constructor so every object creation updates the shared counter.",
+        },
+      },
+      {
+        heading: "EXXXX Trace — Counter Alias",
+        text: "Counter c3 = c1 creates an alias, not a new object.",
+        quiz: {
+          question: "After Counter c1 = new Counter(); Counter c2 = new Counter(); Counter c3 = c1;, what is Counter.Count?",
+          options: ["1", "2", "3", "0"],
+          answer: 1,
+          explanation: "Only two objects were created with new, so shared count is 2.",
+        },
+      },
+      {
+        heading: "EXXXX Trace — Global vs Instance",
+        text: "GlobalCount is static and shared; InstanceCount belongs to each object separately.",
+        quiz: {
+          question: "If c1 increments twice and c2 increments once, what are (c1.InstanceCount, Counter.GlobalCount)?",
+          options: ["(1,1)", "(2,2)", "(2,3)", "(3,3)"],
+          answer: 2,
+          explanation: "c1 tracks two instance increments; global tracks all three increments.",
+        },
+      },
+      {
+        heading: "Bro Code Review — Static Access Rule",
+        text: "Static methods do not have this and should not directly touch instance fields.",
+        quiz: {
+          question: "Why can a static method not directly read instance field name?",
+          options: ["Instance fields are always private", "No object context exists in static methods", "The compiler removes instance fields", "Static methods run before classes load"],
+          answer: 1,
+          explanation: "Without an instance, there is no this reference to resolve instance members.",
+        },
+      },
     ],
   },
 
@@ -1647,7 +1864,7 @@ class Program
     title: "Encapsulation and Overloading",
     subtitle:
       "Access levels, method overloading, constructor overloading, and operator overloading.",
-    source: "Ch3_OOP.pdf",
+    source: "Ch3_OOP.pdf · EX1.pdf · EX11.pdf · EXXXX.pdf · Bro Code C# Full Course",
     available: true,
     sections: [
       // ── ACCESS SPECIFIERS ────────────────────────────────────────────────
@@ -1944,338 +2161,107 @@ Console.WriteLine(v1 + v2);`,
           explanation: "Operator overloads must be declared public and static.",
         },
       },
-    ],
-  },
 
-  // ─────────────────────────────────────────────────────────────────────────
-  // COMPOSITION
-  // ─────────────────────────────────────────────────────────────────────────
-  {
-    slug: "composition",
-    title: "Composition",
-    subtitle:
-      "Composition vs aggregation, nested classes, and partial classes.",
-    source: "Ch4_OOP.pdf",
-    available: true,
-    sections: [
-      // ── COMPOSITION ──────────────────────────────────────────────────────
       {
-        heading: "Composition",
-        text: "Composition is a 'has-a' relationship where the contained object cannot exist independently of the container. When the container is destroyed, its parts are too.",
-        code: {
-          language: "csharp",
-          snippet: `class Engine
-{
-    public int Horsepower;
-    public Engine(int hp) { Horsepower = hp; }
-}
-
-class Car
-{
-    private Engine engine;
-
-    public Car(int hp)
-    {
-        engine = new Engine(hp);
-    }
-
-    public void ShowPower() => Console.WriteLine(engine.Horsepower + " HP");
-}
-
-Car car = new Car(200);
-car.ShowPower();`,
-          output: "200 HP",
-        },
-      },
-      {
-        heading: "Composition — Exercise 1",
-        text: "In composition the contained object is created inside the container's constructor, not passed in from outside.",
-        fixExercise: {
-          title: "Fix the composition — create Engine inside Car",
-          broken: `using System;
-
-class Engine { public string Type = "V8"; }
-
-class Car
-{
-    public Engine engine;
-}
-
-class Program
-{
-    static void Main()
-    {
-        Car car = new Car();
-        Console.WriteLine(car.engine.Type);
-    }
-}`,
-          solution: `using System;
-
-class Engine { public string Type = "V8"; }
-
-class Car
-{
-    private Engine engine = new Engine();
-    public string EngineType => engine.Type;
-}
-
-class Program
-{
-    static void Main()
-    {
-        Car car = new Car();
-        Console.WriteLine(car.EngineType);
-    }
-}`,
-          hint: "Create the Engine instance inside Car and expose it via a property rather than making it public.",
-        },
+        heading: "EX11 Review — this Keyword",
+        text: "this refers to the current object and is useful to resolve parameter shadowing.",
         quiz: {
-          question: "Which statement best describes composition?",
-          options: [
-            "Two independent objects share a reference",
-            "A contained object lives and dies with its container",
-            "A class inherits behaviour from another class",
-            "Objects are created from an interface",
-          ],
-          answer: 1,
-          explanation:
-            "In composition the part cannot exist without the whole — their lifetimes are coupled.",
-        },
-      },
-
-      // ── AGGREGATION ──────────────────────────────────────────────────────
-      {
-        heading: "Aggregation",
-        text: "Aggregation is a looser 'has-a' where the contained object can exist independently. The outer class receives a reference to an already-existing object.",
-        code: {
-          language: "csharp",
-          snippet: `class Teacher
-{
-    public string Name;
-    public Teacher(string name) { Name = name; }
-}
-
-class Classroom
-{
-    private Teacher teacher;
-
-    public Classroom(Teacher t)
-    {
-        teacher = t;      // Teacher already exists outside
-    }
-
-    public void Info() => Console.WriteLine("Teacher: " + teacher.Name);
-}
-
-Teacher alice = new Teacher("Alice");
-Classroom room = new Classroom(alice);
-room.Info();
-Console.WriteLine(alice.Name + " still exists");`,
-          output: `Teacher: Alice
-Alice still exists`,
-        },
-      },
-      {
-        heading: "Aggregation — Exercise 1",
-        text: "Unlike composition, in aggregation the contained object is passed in (injected), not created inside the constructor.",
-        fixExercise: {
-          title: "Convert composition to aggregation",
-          broken: `using System;
-
-class Pilot { public string Name = "Bob"; }
-
-class Plane
-{
-    private Pilot pilot = new Pilot();
-    public void Show() => Console.WriteLine(pilot.Name);
-}
-
-class Program
-{
-    static void Main()
-    {
-        Plane p = new Plane();
-        p.Show();
-    }
-}`,
-          solution: `using System;
-
-class Pilot { public string Name; public Pilot(string n) { Name = n; } }
-
-class Plane
-{
-    private Pilot pilot;
-    public Plane(Pilot p) { pilot = p; }
-    public void Show() => Console.WriteLine(pilot.Name);
-}
-
-class Program
-{
-    static void Main()
-    {
-        Pilot pilot = new Pilot("Bob");
-        Plane plane = new Plane(pilot);
-        plane.Show();
-    }
-}`,
-          hint: "Accept the Pilot as a constructor parameter instead of creating it inside Plane.",
-        },
-        quiz: {
-          question:
-            "What is the key difference between composition and aggregation?",
-          options: [
-            "Composition uses interfaces; aggregation does not",
-            "In aggregation the contained object can outlive the container",
-            "Aggregation only works with value types",
-            "There is no practical difference",
-          ],
-          answer: 1,
-          explanation:
-            "In aggregation the contained object exists independently and can outlive the container.",
-        },
-      },
-
-      // ── NESTED CLASSES ───────────────────────────────────────────────────
-      {
-        heading: "Nested Classes",
-        text: "A class declared inside another class is a nested class. It is scoped to its outer class and is useful for implementation details that should not be visible outside.",
-        code: {
-          language: "csharp",
-          snippet: `class OuterClass
-{
-    private int secret = 42;
-
-    public class InnerClass
-    {
-        public void Greet() => Console.WriteLine("Hello from Inner!");
-    }
-
-    public void ShowSecret(InnerClass ic)
-    {
-        Console.WriteLine("Secret: " + secret);
-    }
-}
-
-OuterClass.InnerClass inner = new OuterClass.InnerClass();
-inner.Greet();`,
-          output: "Hello from Inner!",
-        },
-      },
-      {
-        heading: "Nested Classes — Exercise 1",
-        text: "A public nested class is accessed as OuterClass.InnerClass from outside the outer class.",
-        fixExercise: {
-          title: "Fix the nested class instantiation",
-          broken: `using System;
-
-class Library
-{
-    public class Book
-    {
-        public string Title = "Unknown";
-    }
-}
-
-class Program
-{
-    static void Main()
-    {
-        Book b = new Book();
-        b.Title = "C# Basics";
-        Console.WriteLine(b.Title);
-    }
-}`,
-          solution: `using System;
-
-class Library
-{
-    public class Book
-    {
-        public string Title = "Unknown";
-    }
-}
-
-class Program
-{
-    static void Main()
-    {
-        Library.Book b = new Library.Book();
-        b.Title = "C# Basics";
-        Console.WriteLine(b.Title);
-    }
-}`,
-          hint: "A nested class must be qualified with its outer class name: Library.Book.",
-        },
-        quiz: {
-          question: "Where is a nested class visible when declared as private?",
-          options: [
-            "Everywhere in the assembly",
-            "Only within its enclosing outer class",
-            "Only within the same namespace",
-            "In the outer class and all derived classes",
-          ],
-          answer: 1,
-          explanation:
-            "A private nested class is accessible only inside the outer class that contains it.",
-        },
-      },
-
-      // ── PARTIAL CLASSES ──────────────────────────────────────────────────
-      {
-        heading: "Partial Classes",
-        text: "The partial keyword splits a class definition across multiple files. All parts must use partial and the same class name. The compiler merges them into one class.",
-        code: {
-          language: "csharp",
-          snippet: `// File 1
-public partial class Employee
-{
-    public void DoWork() => Console.WriteLine("Working...");
-}
-
-// File 2
-public partial class Employee
-{
-    public void GoToLunch() => Console.WriteLine("Lunch time!");
-}
-
-Employee e = new Employee();
-e.DoWork();
-e.GoToLunch();`,
-          output: `Working...
-Lunch time!`,
-        },
-      },
-      {
-        heading: "Partial Classes — Exercise 1",
-        text: "Every part of a partial class must include the partial keyword, otherwise the compiler sees two duplicate class definitions and reports an error.",
-        fixExercise: {
-          title: "Mark both parts as partial",
-          broken: `public class Employee
-{
-    public void DoWork() { }
-}
-
-public class Employee
-{
-    public void GoToLunch() { }
-}`,
-          solution: `public partial class Employee
-{
-    public void DoWork() { }
-}
-
-public partial class Employee
-{
-    public void GoToLunch() { }
-}`,
-          hint: "Add the partial keyword to both class declarations.",
-        },
-        quiz: {
-          question: "What keyword splits a class across multiple files?",
-          options: ["split", "shared", "partial", "multi"],
+          question: "Which keyword accesses members of the current object instance?",
+          options: ["base", "self", "this", "static"],
           answer: 2,
-          explanation:
-            "The partial keyword allows a class definition to span multiple files.",
+          explanation: "this points to the current object instance.",
+        },
+      },
+      {
+        heading: "EXXXX Practice — Fix Constructor Shadowing",
+        text: "The statement age = age; does not update the field because the parameter shadows it.",
+        fixExercise: {
+          title: "Fix field assignment and validation",
+          broken: `class Student
+{
+    private int age;
+
+    public int Age
+    {
+        get { return age; }
+        set { age = value; }
+    }
+
+    public Student(int age)
+    {
+        age = age;
+    }
+}`,
+          solution: `class Student
+{
+    private int age;
+
+    public int Age
+    {
+        get { return age; }
+        set
+        {
+            if (value >= 0)
+                age = value;
+        }
+    }
+
+    public Student(int age)
+    {
+        this.age = age >= 0 ? age : 0;
+    }
+}`,
+          hint: "Use this.age to target the field, and reject negative values in the setter.",
+        },
+      },
+      {
+        heading: "Bro Code Review — Auto Properties",
+        text: "Auto-properties reduce boilerplate when you do not need custom get/set logic.",
+        quiz: {
+          question: "Which declaration is an auto-implemented property?",
+          options: ["public int Age;", "public int Age() { get; set; }", "public int Age { get; set; }", "private int Age { get; }"],
+          answer: 2,
+          explanation: "Auto-properties use property syntax with get/set and no explicit backing field.",
+        },
+      },
+      {
+        heading: "Bro Code Review — Read-Only Property",
+        text: "A property with get and no public set is read-only from outside.",
+        quiz: {
+          question: "Which is read-only from outside the class?",
+          options: ["public int ID { get; }", "public int ID { set; }", "public int ID;", "public void ID() {}"],
+          answer: 0,
+          explanation: "A property with only get cannot be assigned externally.",
+        },
+      },
+      {
+        heading: "Bro Code Review — Access Level Choice",
+        text: "Encapsulation favors minimal exposure; expose behavior, hide internals.",
+        quiz: {
+          question: "Which modifier keeps a field visible only inside its class?",
+          options: ["public", "protected", "internal", "private"],
+          answer: 3,
+          explanation: "private restricts access to the declaring class.",
+        },
+      },
+      {
+        heading: "Bro Code Review — Overload Selection",
+        text: "Overload resolution is compile-time and depends on argument types/count.",
+        quiz: {
+          question: "Method overloading requires methods to share the same:",
+          options: ["Return type only", "Name and different parameter lists", "Access modifier", "Method body"],
+          answer: 1,
+          explanation: "Overloads share a name but differ in parameter signature.",
+        },
+      },
+      {
+        heading: "Bro Code Review — Setter Validation",
+        text: "Set accessors are a common place to enforce business rules before storing new values.",
+        quiz: {
+          question: "Where should you reject invalid negative age values in an encapsulated Person class?",
+          options: ["In Main() only", "Inside the Age property setter", "Inside ToString()", "In a static constructor"],
+          answer: 1,
+          explanation: "Validation belongs at the write boundary, typically in the property setter.",
         },
       },
     ],
@@ -2289,7 +2275,7 @@ public partial class Employee
     title: "Inheritance",
     subtitle:
       "Base/derived relation, protected, virtual/override, base keyword, ToString override, and sealed.",
-    source: "Ch5_OOP.pdf",
+    source: "Ch5_OOP.pdf · EX1.pdf · Bro Code C# Full Course",
     available: true,
     sections: [
       // ── BASE AND DERIVED ──────────────────────────────────────────────────
@@ -2745,6 +2731,442 @@ f.Hello();`,
             "sealed stops a class from being used as a base class for inheritance.",
         },
       },
+
+      {
+        heading: "Bro Code Review — Abstract Class",
+        text: "Abstract classes cannot be instantiated directly and can require derived overrides.",
+        quiz: {
+          question: "What is true about an abstract class in C#?",
+          options: ["It can always be instantiated", "It cannot contain implemented methods", "It cannot be instantiated directly", "It must be static"],
+          answer: 2,
+          explanation: "Abstract classes define shared design but are not directly creatable.",
+        },
+      },
+      {
+        heading: "Bro Code Review — base Keyword",
+        text: "base is used to call hidden or overridden members from the parent implementation.",
+        quiz: {
+          question: "Which keyword calls a base class constructor from a derived constructor?",
+          options: ["this", "super", "parent", "base"],
+          answer: 3,
+          explanation: "Use : base(...) in derived constructor declarations.",
+        },
+      },
+      {
+        heading: "Bro Code Review — Sealed Restriction",
+        text: "sealed prevents further inheritance when a class design should remain final.",
+        quiz: {
+          question: "What does sealed class Animal mean?",
+          options: ["Animal can only have private members", "Animal cannot be inherited", "Animal cannot override methods", "Animal is abstract"],
+          answer: 1,
+          explanation: "sealed marks the class as not inheritable.",
+        },
+      },
+      {
+        heading: "Bro Code Review — Override Behavior",
+        text: "When calling through a base reference, virtual+override dispatches runtime behavior.",
+        quiz: {
+          question: "If Animal a = new Dog(); and Speak is virtual/override, which implementation runs?",
+          options: ["Always Animal.Speak", "Always Dog.Speak", "Dog.Speak at runtime", "Compile error"],
+          answer: 2,
+          explanation: "Runtime polymorphism selects the most derived override for the real object type.",
+        },
+      },
+    ],
+  },
+
+  // ─────────────────────────────────────────────────────────────────────────
+  // COMPOSITION
+  // ─────────────────────────────────────────────────────────────────────────
+  {
+    slug: "composition",
+    title: "Composition",
+    subtitle:
+      "Composition vs aggregation, nested classes, and partial classes.",
+    source: "Ch4_OOP.pdf · EX1.pdf · Bro Code C# Full Course",
+    available: true,
+    sections: [
+      // ── COMPOSITION ──────────────────────────────────────────────────────
+      {
+        heading: "Composition",
+        text: "Composition is a 'has-a' relationship where the contained object cannot exist independently of the container. When the container is destroyed, its parts are too.",
+        code: {
+          language: "csharp",
+          snippet: `class Engine
+{
+    public int Horsepower;
+    public Engine(int hp) { Horsepower = hp; }
+}
+
+class Car
+{
+    private Engine engine;
+
+    public Car(int hp)
+    {
+        engine = new Engine(hp);
+    }
+
+    public void ShowPower() => Console.WriteLine(engine.Horsepower + " HP");
+}
+
+Car car = new Car(200);
+car.ShowPower();`,
+          output: "200 HP",
+        },
+      },
+      {
+        heading: "Composition — Exercise 1",
+        text: "In composition the contained object is created inside the container's constructor, not passed in from outside.",
+        fixExercise: {
+          title: "Fix the composition — create Engine inside Car",
+          broken: `using System;
+
+class Engine { public string Type = "V8"; }
+
+class Car
+{
+    public Engine engine;
+}
+
+class Program
+{
+    static void Main()
+    {
+        Car car = new Car();
+        Console.WriteLine(car.engine.Type);
+    }
+}`,
+          solution: `using System;
+
+class Engine { public string Type = "V8"; }
+
+class Car
+{
+    private Engine engine = new Engine();
+    public string EngineType => engine.Type;
+}
+
+class Program
+{
+    static void Main()
+    {
+        Car car = new Car();
+        Console.WriteLine(car.EngineType);
+    }
+}`,
+          hint: "Create the Engine instance inside Car and expose it via a property rather than making it public.",
+        },
+        quiz: {
+          question: "Which statement best describes composition?",
+          options: [
+            "Two independent objects share a reference",
+            "A contained object lives and dies with its container",
+            "A class inherits behaviour from another class",
+            "Objects are created from an interface",
+          ],
+          answer: 1,
+          explanation:
+            "In composition the part cannot exist without the whole — their lifetimes are coupled.",
+        },
+      },
+
+      // ── AGGREGATION ──────────────────────────────────────────────────────
+      {
+        heading: "Aggregation",
+        text: "Aggregation is a looser 'has-a' where the contained object can exist independently. The outer class receives a reference to an already-existing object.",
+        code: {
+          language: "csharp",
+          snippet: `class Teacher
+{
+    public string Name;
+    public Teacher(string name) { Name = name; }
+}
+
+class Classroom
+{
+    private Teacher teacher;
+
+    public Classroom(Teacher t)
+    {
+        teacher = t;      // Teacher already exists outside
+    }
+
+    public void Info() => Console.WriteLine("Teacher: " + teacher.Name);
+}
+
+Teacher alice = new Teacher("Alice");
+Classroom room = new Classroom(alice);
+room.Info();
+Console.WriteLine(alice.Name + " still exists");`,
+          output: `Teacher: Alice
+Alice still exists`,
+        },
+      },
+      {
+        heading: "Aggregation — Exercise 1",
+        text: "Unlike composition, in aggregation the contained object is passed in (injected), not created inside the constructor.",
+        fixExercise: {
+          title: "Convert composition to aggregation",
+          broken: `using System;
+
+class Pilot { public string Name = "Bob"; }
+
+class Plane
+{
+    private Pilot pilot = new Pilot();
+    public void Show() => Console.WriteLine(pilot.Name);
+}
+
+class Program
+{
+    static void Main()
+    {
+        Plane p = new Plane();
+        p.Show();
+    }
+}`,
+          solution: `using System;
+
+class Pilot { public string Name; public Pilot(string n) { Name = n; } }
+
+class Plane
+{
+    private Pilot pilot;
+    public Plane(Pilot p) { pilot = p; }
+    public void Show() => Console.WriteLine(pilot.Name);
+}
+
+class Program
+{
+    static void Main()
+    {
+        Pilot pilot = new Pilot("Bob");
+        Plane plane = new Plane(pilot);
+        plane.Show();
+    }
+}`,
+          hint: "Accept the Pilot as a constructor parameter instead of creating it inside Plane.",
+        },
+        quiz: {
+          question:
+            "What is the key difference between composition and aggregation?",
+          options: [
+            "Composition uses interfaces; aggregation does not",
+            "In aggregation the contained object can outlive the container",
+            "Aggregation only works with value types",
+            "There is no practical difference",
+          ],
+          answer: 1,
+          explanation:
+            "In aggregation the contained object exists independently and can outlive the container.",
+        },
+      },
+
+      // ── NESTED CLASSES ───────────────────────────────────────────────────
+      {
+        heading: "Nested Classes",
+        text: "A class declared inside another class is a nested class. It is scoped to its outer class and is useful for implementation details that should not be visible outside.",
+        code: {
+          language: "csharp",
+          snippet: `class OuterClass
+{
+    private int secret = 42;
+
+    public class InnerClass
+    {
+        public void Greet() => Console.WriteLine("Hello from Inner!");
+    }
+
+    public void ShowSecret(InnerClass ic)
+    {
+        Console.WriteLine("Secret: " + secret);
+    }
+}
+
+OuterClass.InnerClass inner = new OuterClass.InnerClass();
+inner.Greet();`,
+          output: "Hello from Inner!",
+        },
+      },
+      {
+        heading: "Nested Classes — Exercise 1",
+        text: "A public nested class is accessed as OuterClass.InnerClass from outside the outer class.",
+        fixExercise: {
+          title: "Fix the nested class instantiation",
+          broken: `using System;
+
+class Library
+{
+    public class Book
+    {
+        public string Title = "Unknown";
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Book b = new Book();
+        b.Title = "C# Basics";
+        Console.WriteLine(b.Title);
+    }
+}`,
+          solution: `using System;
+
+class Library
+{
+    public class Book
+    {
+        public string Title = "Unknown";
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Library.Book b = new Library.Book();
+        b.Title = "C# Basics";
+        Console.WriteLine(b.Title);
+    }
+}`,
+          hint: "A nested class must be qualified with its outer class name: Library.Book.",
+        },
+        quiz: {
+          question: "Where is a nested class visible when declared as private?",
+          options: [
+            "Everywhere in the assembly",
+            "Only within its enclosing outer class",
+            "Only within the same namespace",
+            "In the outer class and all derived classes",
+          ],
+          answer: 1,
+          explanation:
+            "A private nested class is accessible only inside the outer class that contains it.",
+        },
+      },
+
+      // ── PARTIAL CLASSES ──────────────────────────────────────────────────
+      {
+        heading: "Partial Classes",
+        text: "The partial keyword splits a class definition across multiple files. All parts must use partial and the same class name. The compiler merges them into one class.",
+        code: {
+          language: "csharp",
+          snippet: `// File 1
+public partial class Employee
+{
+    public void DoWork() => Console.WriteLine("Working...");
+}
+
+// File 2
+public partial class Employee
+{
+    public void GoToLunch() => Console.WriteLine("Lunch time!");
+}
+
+Employee e = new Employee();
+e.DoWork();
+e.GoToLunch();`,
+          output: `Working...
+Lunch time!`,
+        },
+      },
+      {
+        heading: "Partial Classes — Exercise 1",
+        text: "Every part of a partial class must include the partial keyword, otherwise the compiler sees two duplicate class definitions and reports an error.",
+        fixExercise: {
+          title: "Mark both parts as partial",
+          broken: `public class Employee
+{
+    public void DoWork() { }
+}
+
+public class Employee
+{
+    public void GoToLunch() { }
+}`,
+          solution: `public partial class Employee
+{
+    public void DoWork() { }
+}
+
+public partial class Employee
+{
+    public void GoToLunch() { }
+}`,
+          hint: "Add the partial keyword to both class declarations.",
+        },
+        quiz: {
+          question: "What keyword splits a class across multiple files?",
+          options: ["split", "shared", "partial", "multi"],
+          answer: 2,
+          explanation:
+            "The partial keyword allows a class definition to span multiple files.",
+        },
+      },
+
+      {
+        heading: "Bro Code Review — Has-A Relationship",
+        text: "Composition models ownership: a container object is built from component objects.",
+        quiz: {
+          question: "Which relation is composition usually describing?",
+          options: ["is-a", "has-a", "can-be", "only static"],
+          answer: 1,
+          explanation: "Composition describes has-a relationships between classes.",
+        },
+      },
+      {
+        heading: "Bro Code Review — Object as Argument",
+        text: "Passing objects to methods enables collaboration between classes without inheritance.",
+        quiz: {
+          question: "What is passed when you call ShipOrder(order) where order is a class instance?",
+          options: ["A deep clone", "A copy of primitive fields only", "A reference to the object", "No value"],
+          answer: 2,
+          explanation: "Class instances are reference types; methods receive a reference copy.",
+        },
+      },
+      {
+        heading: "Bro Code Review — Array of Objects",
+        text: "Arrays can hold object references, enabling grouped operations across instances.",
+        quiz: {
+          question: "Which declaration creates an array that can store 3 Student objects?",
+          options: ["Student s = new Student[3];", "Student[] s = new Student[3];", "Student[3] s = new Student();", "array<Student> s = 3;"],
+          answer: 1,
+          explanation: "Student[] declares an array type, and new Student[3] allocates 3 slots.",
+        },
+      },
+      {
+        heading: "Bro Code Review — List<T> Basics",
+        text: "Bro Code later introduces List<T>; we keep it as quiz coverage inside current topics.",
+        quiz: {
+          question: "Which type supports dynamic growth compared to fixed-size arrays?",
+          options: ["int", "string", "List<T>", "enum"],
+          answer: 2,
+          explanation: "List<T> can grow and shrink dynamically.",
+        },
+      },
+      {
+        heading: "Bro Code Review — Null Components",
+        text: "Composition needs null checks when optional parts might not be initialized yet.",
+        quiz: {
+          question: "Why check if (car.Engine != null) before use?",
+          options: ["To avoid boxing", "To avoid NullReferenceException", "To force static dispatch", "To enable inheritance"],
+          answer: 1,
+          explanation: "Null checks prevent runtime exceptions when a component is missing.",
+        },
+      },
+      {
+        heading: "EX1 Applied — Rectangle Area",
+        text: "Build Rectangle with constructor and GetArea method, then create an object in Main.",
+        quiz: {
+          question: "If Length = 6 and Width = 4, what should GetArea return?",
+          options: ["10", "24", "12", "2"],
+          answer: 1,
+          explanation: "Rectangle area is length * width, so 6 * 4 = 24.",
+        },
+      },
     ],
   },
 
@@ -2756,7 +3178,7 @@ f.Hello();`,
     title: "Method Hiding and Polymorphism",
     subtitle:
       "Compile-time vs runtime polymorphism, overloading, overriding, method hiding with new, and upcasting.",
-    source: "Ch6_OOP.pdf",
+    source: "Ch6_OOP.pdf · EX1.pdf · EXer.pdf · Bro Code C# Full Course",
     available: true,
     sections: [
       // ── OVERLOADING (COMPILE-TIME) ────────────────────────────────────────
@@ -3081,9 +3503,75 @@ class Program
             "as returns null if the object cannot be cast to the target type instead of throwing.",
         },
       },
+
+      {
+        heading: "Bro Code Review — Interface Basics",
+        text: "Bro Code covers interfaces later; we include concept checks under existing topics.",
+        quiz: {
+          question: "What does an interface mainly define?",
+          options: ["Stored field values", "Method/property contracts", "Constructor implementations", "Thread scheduling"],
+          answer: 1,
+          explanation: "Interfaces declare contracts that implementing types must fulfill.",
+        },
+      },
+      {
+        heading: "Bro Code Review — Generic Method Idea",
+        text: "Generics allow reusable logic across different data types with compile-time safety.",
+        quiz: {
+          question: "Why use a generic method like Swap<T>(ref T a, ref T b)?",
+          options: ["To avoid all compile-time checks", "To work with multiple types safely", "To force runtime casting", "To disable method overloading"],
+          answer: 1,
+          explanation: "Generics preserve type safety while reusing logic.",
+        },
+      },
+      {
+        heading: "Bro Code Review — Enum Usage",
+        text: "Enums represent a fixed set of named constants and improve readability over magic numbers.",
+        quiz: {
+          question: "What is the main benefit of enum Day { Mon, Tue, ... }?",
+          options: ["Automatic database storage", "Named constants for a closed set", "Dynamic runtime extension", "Inheritance support"],
+          answer: 1,
+          explanation: "Enums provide clear named constants for fixed options.",
+        },
+      },
+      {
+        heading: "EX1/EXer Review — OOP Pillars",
+        text: "Concept review items from EX1 emphasize encapsulation, inheritance, and polymorphism distinctions.",
+        quiz: {
+          question: "Which OOP principle allows one interface to represent many concrete behaviors?",
+          options: ["Encapsulation", "Inheritance", "Polymorphism", "Abstraction only"],
+          answer: 2,
+          explanation: "Polymorphism allows different concrete implementations behind a common contract.",
+        },
+      },
+      {
+        heading: "Bro Code Review — Override vs new",
+        text: "override participates in runtime dispatch; new hides a base member without virtual polymorphism.",
+        quiz: {
+          question: "What does new on a derived method do?",
+          options: ["Forces runtime polymorphism", "Hides the base method", "Calls base method automatically", "Makes method static"],
+          answer: 1,
+          explanation: "new creates member hiding, not virtual override dispatch.",
+        },
+      },
+      {
+        heading: "Bro Code Review — Multithreading Awareness",
+        text: "Bro Code introduces threading later; this quiz checks conceptual understanding without adding a new topic page.",
+        quiz: {
+          question: "What is a common risk when multiple threads mutate the same shared variable without synchronization?",
+          options: ["Guaranteed deterministic order", "Race conditions", "Automatic deep copies", "Compile-time error"],
+          answer: 1,
+          explanation: "Unsynchronized shared writes can produce race conditions and inconsistent results.",
+        },
+      },
     ],
   },
 ];
+
+/** Stable DOM id for a lesson section (hub index + deep links). */
+export function csharpSectionDomId(topicSlug: string, sectionIndex: number): string {
+  return `${topicSlug}-section-${sectionIndex}`;
+}
 
 export const csharpTopicMap = new Map(
   csharpTopics.map((topic) => [topic.slug, topic]),

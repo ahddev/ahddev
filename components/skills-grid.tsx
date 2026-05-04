@@ -26,6 +26,7 @@ import {
   SiRedis,
   SiRedux,
   SiRender,
+  SiSupabase,
   SiTailwindcss,
   SiTypescript,
   SiVercel,
@@ -57,6 +58,7 @@ const categories: { label: string; skills: SkillItem[] }[] = [
   {
     label: "Backend",
     skills: [
+      { name: "Supabase", icon: SiSupabase, color: "#3ECF8E" },
       { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
       { name: "Express.js", icon: SiExpress, color: "#ffffff" },
       { name: "REST APIs", icon: SiOpenapiinitiative, color: "#6BA539" },
@@ -68,6 +70,7 @@ const categories: { label: string; skills: SkillItem[] }[] = [
     // label: "Database & ORM's",
     label: "Database",
     skills: [
+      { name: "Supabase", icon: SiSupabase, color: "#3ECF8E" },
       { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
       // { name: "Mongoose", icon: SiMongodb, color: "#880000" },
       // { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
