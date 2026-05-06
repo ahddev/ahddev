@@ -1,5 +1,15 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { csharpSectionDomId, csharpTopics } from "@/lib/csharp/content";
+
+export const metadata: Metadata = {
+  title: "C# Learning Hub",
+  description:
+    "Docs-style C# and OOP lessons with concise explanations, code examples, and quick exercises.",
+  alternates: {
+    canonical: "/csharp",
+  },
+};
 
 export default function CsharpPage() {
   return (

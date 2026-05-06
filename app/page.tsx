@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Github, Instagram, Linkedin, Youtube } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -5,6 +6,15 @@ import { SkillsGrid } from "@/components/skills-grid";
 import { CopyEmailButton } from "@/components/copy-email-button";
 
 const EMAIL = "reach.ahed@gmail.com";
+
+export const metadata: Metadata = {
+  title: "Home",
+  description:
+    "Software engineer based in Damascus, Syria. Building modern web applications and mobile apps.",
+  alternates: {
+    canonical: "/",
+  },
+};
 
 function SocialLinks() {
   const links = [

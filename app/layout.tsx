@@ -72,6 +72,15 @@ export const metadata: Metadata = {
   alternates: {
     canonical: SITE_URL,
   },
+  applicationName: "Ahed Al-Khalaf",
+  appleWebApp: {
+    capable: true,
+    title: "Ahed Portfolio",
+    statusBarStyle: "black-translucent",
+  },
+  formatDetection: {
+    telephone: false,
+  },
 };
 
 export default function RootLayout({
