@@ -9,6 +9,7 @@ import {
   SiCss,
   SiDocker,
   SiExpress,
+  SiExpo,
   SiFramer,
   SiGithub,
   SiGithubactions,
@@ -67,6 +68,14 @@ const categories: { label: string; skills: SkillItem[] }[] = [
       { name: "REST APIs", icon: SiOpenapiinitiative, color: "#6BA539" },
       { name: "JWT", icon: SiJsonwebtokens, color: "#FB015B" },
       { name: "OAuth", icon: SiOpenid, color: "#F78C40" },
+    ],
+  },
+  {
+    label: "Mobile",
+    skills: [
+      { name: "React Native", icon: SiReact, color: "#61DAFB" },
+      { name: "Expo", icon: SiExpo, color: "#000020" },
+      { name: "NativeWind", icon: SiTailwindcss, color: "#06B6D4" },
     ],
   },
   {
