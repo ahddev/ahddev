@@ -1,14 +1,14 @@
 import { NextResponse } from "next/server";
-import { PUSH_SUB_KEY } from "@/lib/inbox";
-import { isKvConfigured, kv } from "@/lib/kv";
+import { savePushSubscription } from "@/lib/inbox-store";
 import { isPushConfigured } from "@/lib/push";
+import { isSupabaseConfigured } from "@/lib/supabase/admin";
 
 export const runtime = "nodejs";
 
 export async function POST(request: Request) {
-  if (!isKvConfigured()) {
+  if (!isSupabaseConfigured()) {
     return NextResponse.json(
-      { error: "Storage is not configured (KV)." },
+      { error: "Storage is not configured (Supabase)." },
       { status: 503 }
     );
   }
@@ -38,7 +38,12 @@ export async function POST(request: Request) {
 
   const { subscription } = body as { subscription: unknown };
 
-  await kv.set(PUSH_SUB_KEY, JSON.stringify(subscription));
+  try {
+    await savePushSubscription(subscription);
+  } catch (err) {
+    console.error("Failed to save push subscription:", err);
+    return NextResponse.json({ error: "Failed to save subscription." }, { status: 500 });
+  }
 
   return NextResponse.json({ ok: true });
 }

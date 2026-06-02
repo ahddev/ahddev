@@ -1,5 +1,4 @@
-export const EMAILS_LIST_KEY = "emails";
-export const PUSH_SUB_KEY = "push:sub";
+export const PUSH_SUBSCRIPTION_ROW_ID = "default";
 export const MAX_STORED_EMAILS = 200;
 
 export type StoredEmail = {
@@ -11,22 +10,22 @@ export type StoredEmail = {
   date: string;
 };
 
-export function parseStoredEmail(raw: unknown): StoredEmail | null {
-  if (typeof raw !== "string") return null;
-  try {
-    const parsed = JSON.parse(raw) as StoredEmail;
-    if (
-      typeof parsed.id === "string" &&
-      typeof parsed.to === "string" &&
-      typeof parsed.from === "string" &&
-      typeof parsed.subject === "string" &&
-      typeof parsed.text === "string" &&
-      typeof parsed.date === "string"
-    ) {
-      return parsed;
-    }
-    return null;
-  } catch {
-    return null;
-  }
+export type InboxEmailRow = {
+  id: string;
+  recipient: string;
+  sender: string;
+  subject: string;
+  body: string;
+  received_at: string;
+};
+
+export function rowToStoredEmail(row: InboxEmailRow): StoredEmail {
+  return {
+    id: row.id,
+    to: row.recipient,
+    from: row.sender,
+    subject: row.subject,
+    text: row.body,
+    date: row.received_at,
+  };
 }

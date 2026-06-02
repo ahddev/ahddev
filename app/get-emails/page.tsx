@@ -1,28 +1,9 @@
 import { PushSubscribe } from "./push-subscribe";
-import {
-  EMAILS_LIST_KEY,
-  parseStoredEmail,
-  type StoredEmail,
-} from "@/lib/inbox";
-import { isKvConfigured, kv } from "@/lib/kv";
+import { listInboxEmails } from "@/lib/inbox-store";
+import type { StoredEmail } from "@/lib/inbox";
+import { isSupabaseConfigured } from "@/lib/supabase/admin";
 
 export const dynamic = "force-dynamic";
-
-async function loadEmails(): Promise<StoredEmail[]> {
-  if (!isKvConfigured()) return [];
-
-  try {
-    const raw = await kv.lrange<string>(EMAILS_LIST_KEY, 0, 199);
-    if (!raw?.length) return [];
-
-    return raw
-      .map((item) => parseStoredEmail(item))
-      .filter((item): item is StoredEmail => item !== null);
-  } catch (err) {
-    console.error("Failed to load emails from KV:", err);
-    return [];
-  }
-}
 
 function formatDate(iso: string): string {
   try {
@@ -36,8 +17,8 @@ function formatDate(iso: string): string {
 }
 
 export default async function GetEmailsPage() {
-  const kvReady = isKvConfigured();
-  const emails = kvReady ? await loadEmails() : [];
+  const supabaseReady = isSupabaseConfigured();
+  const emails: StoredEmail[] = supabaseReady ? await listInboxEmails() : [];
 
   return (
     <div className="min-h-screen pt-24 pb-20 font-[family-name:var(--font-geist-sans)]">
@@ -52,16 +33,16 @@ export default async function GetEmailsPage() {
 
         <PushSubscribe />
 
-        {!kvReady && (
+        {!supabaseReady && (
           <p className="mb-6 rounded-md border border-amber-500/40 bg-amber-500/10 px-4 py-3 text-sm text-amber-200">
-            Vercel KV is not configured. Add{" "}
-            <code className="font-mono text-xs">KV_REST_API_URL</code> and{" "}
-            <code className="font-mono text-xs">KV_REST_API_TOKEN</code> (see{" "}
+            Supabase is not configured. Add{" "}
+            <code className="font-mono text-xs">NEXT_PUBLIC_SUPABASE_URL</code> and{" "}
+            <code className="font-mono text-xs">SUPABASE_SERVICE_ROLE_KEY</code> (see{" "}
             <code className="font-mono text-xs">docs/INBOUND_EMAIL_SETUP.md</code>).
           </p>
         )}
 
-        {kvReady && emails.length === 0 && (
+        {supabaseReady && emails.length === 0 && (
           <p className="text-sm text-muted-foreground">No emails yet.</p>
         )}
 

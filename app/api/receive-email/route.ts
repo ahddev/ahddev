@@ -1,14 +1,10 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
 import type { EmailReceivedEvent } from "resend";
-import {
-  EMAILS_LIST_KEY,
-  MAX_STORED_EMAILS,
-  PUSH_SUB_KEY,
-  type StoredEmail,
-} from "@/lib/inbox";
-import { isKvConfigured, kv } from "@/lib/kv";
+import type { StoredEmail } from "@/lib/inbox";
+import { getPushSubscription, saveInboxEmail } from "@/lib/inbox-store";
 import { isPushConfigured, sendPush } from "@/lib/push";
+import { isSupabaseConfigured } from "@/lib/supabase/admin";
 import type { PushSubscription } from "web-push";
 
 export const runtime = "nodejs";
@@ -18,9 +14,9 @@ function siteUrl(): string {
 }
 
 export async function POST(request: Request) {
-  if (!isKvConfigured()) {
+  if (!isSupabaseConfigured()) {
     return NextResponse.json(
-      { error: "Inbox storage is not configured (KV)." },
+      { error: "Inbox storage is not configured (Supabase)." },
       { status: 503 }
     );
   }
@@ -93,15 +89,18 @@ export async function POST(request: Request) {
     date: created_at ?? new Date().toISOString(),
   };
 
-  await kv.lpush(EMAILS_LIST_KEY, JSON.stringify(stored));
-  await kv.ltrim(EMAILS_LIST_KEY, 0, MAX_STORED_EMAILS - 1);
+  try {
+    await saveInboxEmail(stored);
+  } catch (err) {
+    console.error("Failed to save email to Supabase:", err);
+    return NextResponse.json({ error: "Failed to store email." }, { status: 500 });
+  }
 
   if (isPushConfigured()) {
-    const subRaw = await kv.get<string>(PUSH_SUB_KEY);
-    if (subRaw) {
+    const subscription = await getPushSubscription();
+    if (subscription) {
       try {
-        const subscription = JSON.parse(subRaw) as PushSubscription;
-        await sendPush(subscription, {
+        await sendPush(subscription as PushSubscription, {
           title: `Email: ${subject || "(no subject)"}`,
           body: `From ${from} → ${toAddress}`,
           url: `${siteUrl()}/get-emails`,
