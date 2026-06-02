@@ -69,12 +69,16 @@ export async function POST(request: Request) {
   const toAddress = Array.isArray(to) ? to.join(", ") : String(to);
 
   let text = "";
+  let html = "";
   try {
     const { data: email, error } = await resend.emails.receiving.get(email_id);
     if (error) {
       console.error("Failed to fetch received email body:", error);
     } else {
-      text = email?.text ?? email?.html?.replace(/<[^>]+>/g, " ") ?? "";
+      html = email?.html ?? "";
+      text =
+        email?.text?.trim() ||
+        html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
     }
   } catch (err) {
     console.error("Receiving API error:", err);
@@ -86,6 +90,7 @@ export async function POST(request: Request) {
     from,
     subject,
     text: text.trim(),
+    html: html.trim(),
     date: created_at ?? new Date().toISOString(),
   };
 
@@ -103,7 +108,7 @@ export async function POST(request: Request) {
         await sendPush(subscription as PushSubscription, {
           title: `Email: ${subject || "(no subject)"}`,
           body: `From ${from} → ${toAddress}`,
-          url: `${siteUrl()}/get-emails`,
+          url: `${siteUrl()}/get-emails/${email_id}`,
         });
       } catch (err) {
         console.error("Push notification failed:", err);

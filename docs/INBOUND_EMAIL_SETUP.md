@@ -67,6 +67,19 @@ Copy keys into `.env` locally. On Vercel, add the same keys under **Project → 
 
 RLS is enabled on both tables with **no public policies** — only the service role (server) can read/write.
 
+## Inbox UI
+
+- **`/get-emails`** — message list (private; not linked from the public site)
+- **`/get-emails/[id]`** — full message view (headers, HTML in a sandboxed frame, or plain text)
+- Push notifications open the specific message URL
+
+After pulling the latest code, apply migrations (includes optional `body_html` for HTML emails):
+
+```bash
+supabase db push
+# or run supabase/migrations/20260602130000_inbox_emails_body_html.sql in the SQL editor
+```
+
 ## iPhone push
 
 1. Open `/get-emails` in **Safari** (iOS 16.4+)

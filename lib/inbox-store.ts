@@ -12,7 +12,7 @@ export async function listInboxEmails(limit = MAX_STORED_EMAILS): Promise<Stored
 
   const { data, error } = await supabase
     .from("inbox_emails")
-    .select("id, recipient, sender, subject, body, received_at")
+    .select("id, recipient, sender, subject, body, body_html, received_at")
     .order("received_at", { ascending: false })
     .limit(limit);
 
@@ -22,6 +22,24 @@ export async function listInboxEmails(limit = MAX_STORED_EMAILS): Promise<Stored
   }
 
   return (data ?? []).map(rowToStoredEmail);
+}
+
+export async function getInboxEmailById(id: string): Promise<StoredEmail | null> {
+  const supabase = createAdminClient();
+  if (!supabase) return null;
+
+  const { data, error } = await supabase
+    .from("inbox_emails")
+    .select("id, recipient, sender, subject, body, body_html, received_at")
+    .eq("id", id)
+    .maybeSingle();
+
+  if (error) {
+    console.error("Failed to load email from Supabase:", error);
+    return null;
+  }
+
+  return data ? rowToStoredEmail(data) : null;
 }
 
 export async function saveInboxEmail(email: StoredEmail): Promise<void> {
@@ -35,6 +53,7 @@ export async function saveInboxEmail(email: StoredEmail): Promise<void> {
       sender: email.from,
       subject: email.subject,
       body: email.text,
+      body_html: email.html,
       received_at: email.date,
     },
     { onConflict: "id" }

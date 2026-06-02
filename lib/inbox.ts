@@ -7,6 +7,7 @@ export type StoredEmail = {
   from: string;
   subject: string;
   text: string;
+  html: string;
   date: string;
 };
 
@@ -16,6 +17,7 @@ export type InboxEmailRow = {
   sender: string;
   subject: string;
   body: string;
+  body_html?: string | null;
   received_at: string;
 };
 
@@ -26,6 +28,7 @@ export function rowToStoredEmail(row: InboxEmailRow): StoredEmail {
     from: row.sender,
     subject: row.subject,
     text: row.body,
+    html: row.body_html ?? "",
     date: row.received_at,
   };
 }
