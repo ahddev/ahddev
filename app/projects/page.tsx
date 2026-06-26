@@ -14,6 +14,14 @@ import Link from "next/link";
 
 const projects = [
   {
+    name: "Yalla Ride",
+    nameAr: "يلا رايد",
+    description: "Bike rides booking app with authentication and users management",
+    url: "https://yallaride-team.com",
+    image: "/yallaride-team.png",
+    status: "live",
+  },
+  {
     name: "NQSH",
     nameAr: "نَقْش",
     description: "A 3D printing shop website",
@@ -71,7 +79,7 @@ export default function ProjectsPage() {
             Projects
           </h1>
           <p className="mt-4 animate-fade-down animate-delay-200 animate-ease-out text-lg text-muted-foreground leading-relaxed">
-            Over the past 12 months of my React & Next.js learning journey, I&apos;ve built 3 real-world web applications — not just tutorials, but projects used by me and actual people and businesses.
+            Over the past 12 months of my React & Next.js learning journey, I&apos;ve built 4 real-world web applications — not just tutorials, but projects used by me and actual people and businesses.
           </p>
         </header>
 
