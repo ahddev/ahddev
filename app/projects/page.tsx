@@ -14,11 +14,12 @@ import Link from "next/link";
 
 const projects = [
   {
-    name: "Yalla Ride",
-    nameAr: "يلا رايد",
-    description: "Bike rides booking app with authentication and users management",
-    url: "https://yallaride-team.com",
-    image: "/yallaride-team.png",
+    name: "Uni",
+    nameAr: "الجدول الجامعي",
+    description:
+      "University timetable builder for IUST students from the semester course catalog",
+    url: "https://uni.ahed.dev",
+    image: "/uni.png",
     status: "live",
   },
   {
@@ -31,12 +32,11 @@ const projects = [
     status: "live",
   },
   {
-    name: "Uni",
-    nameAr: "الجدول الجامعي",
-    description:
-      "University timetable builder for IUST students from the semester course catalog",
-    url: "https://uni.ahed.dev",
-    image: "/uni.png",
+    name: "Yalla Ride",
+    nameAr: "يلا رايد",
+    description: "Bike rides booking app with authentication and users management",
+    url: "https://yallaride-team.com",
+    image: "/yallaride-team.png",
     status: "live",
   },
   {

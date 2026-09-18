@@ -16,7 +16,6 @@ import {
   SiHtml5,
   SiJavascript,
   SiJsonwebtokens,
-  SiMongodb,
   SiNextdotjs,
   SiNodedotjs,
   SiOpenapiinitiative,
@@ -83,9 +82,7 @@ const categories: { label: string; skills: SkillItem[] }[] = [
     label: "Database",
     skills: [
       { name: "Supabase", icon: SiSupabase, color: "#3ECF8E" },
-      { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
-      // { name: "Mongoose", icon: SiMongodb, color: "#880000" },
-      // { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
+      { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
       // { name: "Prisma ORM", icon: SiPrisma, color: "#2D3748" },
       // { name: "Redis", icon: SiRedis, color: "#DC382D" },
     ],

@@ -49,16 +49,16 @@ sectionTitle("PROJECTS");
 
 const projects = [
   {
-    name: "Yalla Ride",
-    desc: "Bike rides booking app with authentication and users management — live at yallaride-team.com",
+    name: "Uni",
+    desc: "University timetable builder for IUST students from the semester course catalog — live at uni.ahed.dev",
   },
   {
     name: "Walaa Card",
     desc: "Loyalty cards app where customers collect stamps from stores for discounts and free rewards — live at walaacard.com",
   },
   {
-    name: "Uni",
-    desc: "University timetable builder for IUST students from the semester course catalog — live at uni.ahed.dev",
+    name: "Yalla Ride",
+    desc: "Bike rides booking app with authentication and users management — live at yallaride-team.com",
   },
   {
     name: "NQSH",
