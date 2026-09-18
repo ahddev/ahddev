@@ -9,11 +9,6 @@ const nextConfig: NextConfig = {
         permanent: false,
       },
       {
-        source: "/instagram",
-        destination: "https://www.instagram.com/realahd/",
-        permanent: false,
-      },
-      {
         source: "/linkedin",
         destination: "https://www.linkedin.com/in/ahddev/",
         permanent: false,

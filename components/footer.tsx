@@ -1,8 +1,7 @@
 import Link from "next/link";
-import { Github, Instagram, Linkedin, Youtube } from "lucide-react";
+import { Github, Linkedin, Youtube } from "lucide-react";
 
 const socialLinks = [
-  { href: "https://www.instagram.com/realahd/", icon: Instagram },
   { href: "https://www.linkedin.com/in/ahddev/", icon: Linkedin },
   { href: "https://www.github.com/ahddev/", icon: Github },
   { href: "https://www.youtube.com/@ahddev", icon: Youtube },
