@@ -22,6 +22,24 @@ const projects = [
     status: "live",
   },
   {
+    name: "Walaa Card",
+    nameAr: "ولاء كارد",
+    description:
+      "Loyalty cards app where customers collect stamps from stores for discounts and free rewards",
+    url: "https://walaacard.com",
+    image: "/walaacard.png",
+    status: "live",
+  },
+  {
+    name: "Uni",
+    nameAr: "الجدول الجامعي",
+    description:
+      "University timetable builder for IUST students from the semester course catalog",
+    url: "https://uni.ahed.dev",
+    image: "/uni.png",
+    status: "live",
+  },
+  {
     name: "NQSH",
     nameAr: "نَقْش",
     description: "A 3D printing shop website",
@@ -30,11 +48,12 @@ const projects = [
     status: "live",
   },
   {
-    name: "Labak",
-    nameAr: "لابَك",
-    description: "Free delivery dental tools store for dentists",
-    url: "https://labak-sy.com",
-    image: "/labak-sy.png",
+    name: "MeenaDent",
+    nameAr: "مينا دنت",
+    description:
+      "Syria's first online store for dental supplies, with free nationwide delivery",
+    url: "https://meenadent.com",
+    image: "/meenadent.png",
     status: "live",
   },
   {
@@ -79,7 +98,7 @@ export default function ProjectsPage() {
             Projects
           </h1>
           <p className="mt-4 animate-fade-down animate-delay-200 animate-ease-out text-lg text-muted-foreground leading-relaxed">
-            Over the past 12 months of my React & Next.js learning journey, I&apos;ve built 4 real-world web applications — not just tutorials, but projects used by me and actual people and businesses.
+            Over the past 12 months of my React & Next.js learning journey, I&apos;ve built 6 real-world web applications — not just tutorials, but projects used by me and actual people and businesses.
           </p>
         </header>
 

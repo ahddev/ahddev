@@ -31,7 +31,7 @@ doc.moveDown(1.5);
 // Summary
 sectionTitle("SUMMARY");
 doc.fontSize(10).fillColor(gray).font("Helvetica").text(
-  "Junior software engineer with 12+ months of experience building real-world web applications with React and Next.js. Shipped 4 production projects used by actual users and businesses. Passionate about clean code, modern UI/UX, and continuous learning. Next goal: build larger-scale applications and join a professional team.",
+  "Junior software engineer with 12+ months of experience building real-world web applications with React and Next.js. Shipped 6 production projects used by actual users and businesses. Passionate about clean code, modern UI/UX, and continuous learning. Next goal: build larger-scale applications and join a professional team.",
   { align: "justify", lineGap: 2 }
 );
 doc.moveDown(1);
@@ -53,12 +53,20 @@ const projects = [
     desc: "Bike rides booking app with authentication and users management — live at yallaride-team.com",
   },
   {
+    name: "Walaa Card",
+    desc: "Loyalty cards app where customers collect stamps from stores for discounts and free rewards — live at walaacard.com",
+  },
+  {
+    name: "Uni",
+    desc: "University timetable builder for IUST students from the semester course catalog — live at uni.ahed.dev",
+  },
+  {
     name: "NQSH",
     desc: "3D printing shop website — live at nqsh-3d.com",
   },
   {
-    name: "Labak",
-    desc: "Free delivery dental tools store for dentists — live at labak-sy.com",
+    name: "MeenaDent",
+    desc: "Syria's first online store for dental supplies, with free nationwide delivery — live at meenadent.com",
   },
   {
     name: "Razio Store",
