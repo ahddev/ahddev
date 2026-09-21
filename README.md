@@ -22,4 +22,5 @@ I enjoy working with modern technologies, clean UI/UX, and writing code that mak
 
 * 🌍 [Portfolio](https://ahed.dev/)
 * 💼 [LinkedIn](https://www.linkedin.com/in/ahddev/)
+* 📸 [Instagram](https://www.instagram.com/realahd/)
 * ✉️ [Email](mailto:reach.ahed@gmail.com)
